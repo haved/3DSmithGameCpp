@@ -15,24 +15,24 @@ void SmithGame::Init()
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 
-	gameScene = new Scene();
-	menuScene = new Scene();
-	CurrentScene = gameScene;
+	m_gameScene = new Scene();
+	m_menuScene = new Scene();
+	CurrentScene = m_gameScene;
 	CurrentView = std::make_shared<SmithingView>(this);
-	basicShaderInstance = std::make_unique<BasicShader>();
+	m_basicShaderInstance = std::make_unique<BasicShader>();
 }
 
 SmithGame::~SmithGame()
 {
 	std::cout << "~SmithGame()" << std::endl;
-	delete gameScene;
-	delete menuScene;
+	delete m_gameScene;
+	delete m_menuScene;
 }
 
 void SmithGame::Resize(int width, int height)
 {
 	glViewport(0, 0, width, height);
-	SmithGame::projection = glm::perspective(3.1415f / 180 * 40, (float)width / height, 0.1f, 60.0f);
+	m_projection = glm::perspective(3.1415f / 180 * 40, (float)width / height, 0.1f, 60.0f);
 }
 
 void SmithGame::Update()
@@ -47,11 +47,9 @@ void SmithGame::Update()
 glm::mat4 VP;
 void SmithGame::Render()
 {
-	VP = projection * glm::lookAt(CurrentView->GetEyePos(), CurrentView->GetEyeTarget(), CurrentView->GetEyeUp());
+	VP = m_projection * glm::lookAt(CurrentView->GetEyePos(), CurrentView->GetEyeTarget(), CurrentView->GetEyeUp());
 	if (CurrentView->RenderScene)
 	{
-		basicShaderInstance->Bind();
-		basicShaderInstance->SetMVP(VP);
 		CurrentScene->Render(VP);
 	}
 	CurrentView->RenderView(VP);

@@ -1,4 +1,6 @@
-﻿#version 330 core
+﻿#
+#
+#version 330 core
 
 in vec4 vertexColor0;
 in vec3 vertexNormal0;

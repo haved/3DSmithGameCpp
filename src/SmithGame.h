@@ -19,9 +19,9 @@ public:
 	Scene* CurrentScene;
 	std::shared_ptr<IView> CurrentView;
 private:
-	glm::mat4 projection;
-	Scene* menuScene;
-	Scene* gameScene;
-	std::unique_ptr<BasicShader> basicShaderInstance;
+	glm::mat4 m_projection;
+	Scene* m_menuScene;
+	Scene* m_gameScene;
+	std::unique_ptr<BasicShader> m_basicShaderInstance;
 };
 

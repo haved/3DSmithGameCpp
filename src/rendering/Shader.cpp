@@ -36,10 +36,15 @@ std::string Shader::LoadShader(const std::string& fileName)
 
 	if (file.is_open())
 	{
-		while (file.good())
+		char c[2];
+		c[1] = '\0';
+		file.get(c[0]);
+		file.get(c[0]);
+		file.get(c[0]);
+		file.get(c[0]);//skip the first
+		while (file.get(c[0]))
 		{
-			getline(file, line);
-			output.append(line + "\n");
+			output.append(c);
 		}
 	}
 	else

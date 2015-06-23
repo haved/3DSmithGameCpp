@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "SmithGame.h"
+#include "rendering/Mesh.h"
 
 #include <iostream>
 #include <GL/glew.h>
@@ -9,7 +10,7 @@ Engine::Engine(int width, int height, const std::string& name)
 	std::cout << "Engine()" << std::endl;
 	m_window = new sf::Window(sf::VideoMode(width, height), name);
 	m_window->setVerticalSyncEnabled(true);
-	if (glewInit() == GL_FALSE)
+	if (glewInit() != GLEW_OK)
 		std::cout << "Filed to initialize glew. This WILL end badly!" << std::endl;
 }
 
@@ -27,6 +28,8 @@ void Engine::Run(SmithGame* game)
 		sf::Vector2u size = m_window->getSize();
 		game->Resize(size.x, size.y);
 	}
+
+	glClearColor(1, 0.5f, 1, 1);
 
 	bool running = true;
 	while (running)

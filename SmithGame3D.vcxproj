@@ -85,6 +85,7 @@
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\IView.h" />
     <ClInclude Include="src\rendering\BasicShader.h" />
+    <ClInclude Include="src\rendering\Mesh.h" />
     <ClInclude Include="src\rendering\Shader.h" />
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\SmithGame.h" />
@@ -93,6 +94,7 @@
   <ItemGroup>
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\rendering\BasicShader.cpp" />
+    <ClCompile Include="src\rendering\Mesh.cpp" />
     <ClCompile Include="src\rendering\Shader.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\SmithGame.cpp" />
