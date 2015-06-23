@@ -1,0 +1,33 @@
+﻿ui.button.newgame===Nytt Spill
+ui.button.resume===Fortsett
+ui.button.savegame===Lagre Spill
+ui.button.loadgame===Last Inn Spill
+ui.button.exittomainmenu===Gå til hovedmenyen
+ui.button.exit===Avslutt
+ui.tooltip.oxygen:===Oksygen:       
+ui.tooltip.purity:===Renhet:        
+ui.tooltip.nocast===Ingen støpeform på bordet
+ui.tooltip.volume:===Volum: 
+ui.tooltip.unit.ingot===Barre
+ui.tooltip.unit.ingot.plural===Barrer
+ui.tooltip.notenoughmoltenmetal===Ikke nok flytende metall
+ui.error.inventoryfull===Beholdningen har ikke nok plass
+ui.error.notanalloy===Smelteovnens innhold er ikke en ren legering
+ui.error.nobladeselected===Ingen sverdblad valgt i beholdningen
+ui.error.savecorruption===Lagringsfila er korrupt og kan ikke leses inn
+ui.item.ingot===ingot
+ui.item.blade===blad
+ui.item.cast===støpeform
+ui.metal.Copper===Kobber
+ui.metal.Gold===Gull
+ui.metal.Iron===Jern
+ui.metal.Lead===Bly
+ui.metal.Tin===Tinn
+ui.metal.Zinc===Sink
+ui.metal.Carbon===Karbon
+ui.metal.Bronze===Bronse
+ui.metal.subtitle.HiTinBronze===Ekstra tinnholdig
+ui.metal.subtitle.LowTinBronze===Mindre tinn
+ui.cast.Ingot===Barre
+ui.cast.Greatsword===Storsverd
+ui.blade.Greatsword===Storsverd

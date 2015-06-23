@@ -58,6 +58,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>OpenGL32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -81,10 +82,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SmithGame.h" />
+    <ClInclude Include="src\Engine.h" />
+    <ClInclude Include="src\IView.h" />
+    <ClInclude Include="src\rendering\BasicShader.h" />
+    <ClInclude Include="src\rendering\Shader.h" />
+    <ClInclude Include="src\Scene.h" />
+    <ClInclude Include="src\SmithGame.h" />
+    <ClInclude Include="src\SmithingView.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SmithGame.cpp" />
+    <ClCompile Include="src\Engine.cpp" />
+    <ClCompile Include="src\rendering\BasicShader.cpp" />
+    <ClCompile Include="src\rendering\Shader.cpp" />
+    <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\SmithGame.cpp" />
+    <ClCompile Include="src\SmithingView.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
