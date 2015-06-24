@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine.h" />
+    <ClInclude Include="src\entity\BellowEntity.h" />
     <ClInclude Include="src\entity\Entity.h" />
     <ClInclude Include="src\entity\MeshEntity.h" />
     <ClInclude Include="src\entity\PlayerEntity.h" />
@@ -98,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine.cpp" />
+    <ClCompile Include="src\entity\BellowEntity.cpp" />
     <ClCompile Include="src\entity\Entity.cpp" />
     <ClCompile Include="src\entity\MeshEntity.cpp" />
     <ClCompile Include="src\entity\PlayerEntity.cpp" />

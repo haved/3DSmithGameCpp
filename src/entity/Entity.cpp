@@ -34,11 +34,8 @@ void Entity::MoveAsSolid(Scene* scene, float xMove, float yMove)
 			if (e == this)
 				continue;
 
-			if (((GetX1() + xMove) < e->GetX2()) & (GetX2() > e->GetX1()) & (GetY1() < e->GetY2()) & (GetY2() > e->GetY1())){
+			if (((GetX1() + xMove) < e->GetX2()) & (GetX2() > e->GetX1()) & (GetY1() < e->GetY2()) & (GetY2() > e->GetY1()))
 				xMove = e->GetX2() - GetX1() + 0.01f;
-				std::cout << "this-> x1: " << GetX1() << " x2: " << GetX2() << " y1: " << GetY1() << " y2: " << GetY2() << std::endl;
-				std::cout << "e-> x1: " << e->GetX1() << " x2: " << e->GetX2() << " y1: " << e->GetY1() << " y2: " << e->GetY2() << std::endl;
-			}
 			if ((GetY1() + yMove < e->GetY2()) & (GetY2() > e->GetY1()) & (GetX1() < e->GetX2()) & (GetX2() > e->GetX1()))
 				yMove = e->GetY2() - GetY1() + 0.01f;
 			if ((GetX2() + xMove > e->GetX1()) & (GetX1() < e->GetX2()) & (GetY1() < e->GetY2()) & (GetY2() > e->GetY1()))
