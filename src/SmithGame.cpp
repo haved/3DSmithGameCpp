@@ -48,7 +48,8 @@ Scene* SmithGame::GetGameScene()
 	m_gameScene->AddEntity(new MeshEntity(wall, 15, 0, 0, -0.2f, 0, -PI / 2));
 	m_gameScene->AddEntity(new MeshEntity(wall, -15, 0, 0, -0.2f, 0, PI / 2));
 	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>(RES_PATH + "mesh/floor.ply"), 0, 0, 0));
-	m_gameScene->AddEntity(new PlayerEntity(-10, 0, std::make_shared<Mesh>(RES_PATH + "mesh/player.ply")));
+	Player = new PlayerEntity(-10, 0, std::make_shared<Mesh>(RES_PATH + "mesh/player.ply"));
+	m_gameScene->AddEntity(Player);
 
 	return m_gameScene;
 }

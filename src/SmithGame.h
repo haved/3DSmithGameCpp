@@ -6,6 +6,7 @@
 
 class Scene;
 class IView;
+class PlayerEntity;
 
 class SmithGame
 {
@@ -18,6 +19,7 @@ public:
 	void Render();
 	Scene* CurrentScene;
 	std::shared_ptr<IView> CurrentView;
+	PlayerEntity* Player;
 	Scene* GetMenuScene();
 	Scene* GetGameScene();
 private:

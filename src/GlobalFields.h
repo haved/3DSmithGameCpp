@@ -1,4 +1,12 @@
 #include "rendering\BasicShader.h"
+#include "SFML/Window.hpp"
 
-extern BasicShader* BasicShaderInstance;
-extern float DeltaTime;
+typedef struct
+{
+	BasicShader* BasicShaderInstance;
+	float DeltaTime;
+	float ElapsedTime;
+	sf::Window* UsedWindow;
+} GlobalFields;
+
+extern GlobalFields Global;

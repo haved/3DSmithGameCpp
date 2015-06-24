@@ -2,6 +2,7 @@
 #include "SmithGame.h"
 #include "rendering/Mesh.h"
 #include "GlobalFields.h"
+#include "util/Input.h";
 
 #include <iostream>
 #include <GL/glew.h>
@@ -21,6 +22,8 @@ Engine::Engine(int width, int height, const std::string& name)
 	m_window->setVerticalSyncEnabled(true);
 	if (glewInit() != GLEW_OK)
 		std::cout << "Filed to initialize glew. This WILL end badly!" << std::endl;
+
+	Global.UsedWindow = m_window;
 }
 
 Engine::~Engine()
@@ -41,11 +44,15 @@ void Engine::Run(SmithGame* game)
 	glClearColor(0, 0.5f, 1, 1);
 
 	sf::Clock clock;
+	sf::Clock elapsed;
 
 	bool running = true;
 	while (running)
 	{
-		DeltaTime = clock.restart().asSeconds();
+		Global.DeltaTime = clock.restart().asSeconds();
+		Global.ElapsedTime = elapsed.getElapsedTime().asSeconds();
+		InputState.Update();
+
 		sf::Event event;
 		while (m_window->pollEvent(event))
 		{
@@ -69,7 +76,7 @@ void Engine::Run(SmithGame* game)
 void Engine::CountFPS()
 {
 	frames++;
-	timePassed += DeltaTime;
+	timePassed += Global.DeltaTime;
 	if (timePassed > 2)
 	{
 		std::cout << "FPS: " << frames / timePassed * 2 << std::endl;

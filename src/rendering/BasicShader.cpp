@@ -7,7 +7,7 @@ BasicShader::BasicShader(const std::string& path)
 	modelspaceId = m_shader->GetUniformLocation("modelspaceMatrix");
 	MVPId = m_shader->GetUniformLocation("MVP");
 	colorId = m_shader->GetUniformLocation("color");
-	BasicShaderInstance = this;
+	Global.BasicShaderInstance = this;
 	SetModelspaceMatrix(glm::mat4());
 }
 

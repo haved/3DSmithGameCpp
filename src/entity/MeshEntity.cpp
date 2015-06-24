@@ -25,9 +25,9 @@ void MeshEntity::Update(Scene* scene){}
 
 void MeshEntity::Render(Scene* scene, glm::mat4& VP)
 {
-	BasicShaderInstance->Bind();
-	BasicShaderInstance->ResetColor();
-	BasicShaderInstance->SetModelspaceMatrix(modelspace);
-	BasicShaderInstance->SetMVP(VP*modelspace);
+	Global.BasicShaderInstance->Bind();
+	Global.BasicShaderInstance->ResetColor();
+	Global.BasicShaderInstance->SetModelspaceMatrix(modelspace);
+	Global.BasicShaderInstance->SetMVP(VP*modelspace);
 	m_mesh->Draw();
 }
