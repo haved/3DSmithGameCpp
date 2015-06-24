@@ -1,10 +1,99 @@
 #include "Mesh.h"
 #include <GL/glew.h>
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
 
 Mesh::Mesh(const std::string& name)
 {
-	assert(false);
+	std::ifstream file;
+	file.open(name.c_str());
+
+	if (!file.is_open())
+	{
+		std::cerr << "The file '" << name << "' could not be opened" << std::endl;
+		assert(false);
+	}
+	
+	std::cout << "The file '" << name << "' could be opened" << std::endl;
+
+	std::string line;
+
+	if (file.good())
+		getline(file, line);
+
+	uint32_t vertexAmount;
+	uint32_t faceAmount;
+	bool normals = false;
+	bool colors = false;
+
+	while (file.good())
+	{
+		getline(file, line);
+		if (line.compare(0, 14, "element vertex")==0)
+			vertexAmount = std::stoi(line.substr(15));
+		else if (line.compare(0, 12, "element face") == 0)
+			faceAmount = std::stoi(line.substr(13));
+		else if (line.compare(0, 10, "end_header") == 0)
+			break;
+		normals |= line.compare(0, 17, "property float nx") == 0;
+		colors |= line.compare(0, 18, "property uchar red") == 0;
+	}
+	assert(file.good());
+
+	Vertex* vertices = new Vertex[vertexAmount];
+	std::vector<GLuint> indices;
+
+	for (uint32_t i = 0; (i < vertexAmount) & file.good(); i++)
+	{
+		getline(file, line);
+		std::stringstream stream(line);
+		stream >> vertices[i].pos.x;
+		stream >> vertices[i].pos.y;
+		stream >> vertices[i].pos.z;
+		if (!stream | !normals)
+			continue;
+		stream >> vertices[i].normal.x;
+		stream >> vertices[i].normal.y;
+		stream >> vertices[i].normal.z;
+		if (!stream | !colors)
+			continue;
+		int color = 0;
+		stream >> color;
+		vertices[i].color.x = color / 255.0f;
+		stream >> color;
+		vertices[i].color.y = color / 255.0f;
+		stream >> color;
+		vertices[i].color.z = color / 255.0f;
+	}
+
+	for (uint32_t i = 0; (i < faceAmount) & file.good(); i++)
+	{
+		std::getline(file, line);
+		std::stringstream stream(line);
+
+		GLuint i0;
+		GLuint i1;
+		GLuint i2;
+
+		stream >> i0;
+		stream >> i0;
+		stream >> i1;
+		stream >> i2;
+		indices.push_back(i0);
+		indices.push_back(i1);
+		indices.push_back(i2);
+		if (stream)
+		{
+			stream >> i1; //Used as i3
+			indices.push_back(i0);
+			indices.push_back(i2);
+			indices.push_back(i1); //Used as i3
+		}
+	}
+	
+	LoadMeshData(vertices, vertexAmount, &indices[0], indices.size());
 }
 
 void MESH_CalcNormals(Vertex v[], uint32_t i[], uint32_t indexCount)
@@ -68,7 +157,7 @@ void Mesh::Draw()
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, false, sizeof(Vertex), 0);
 	glVertexAttribPointer(1, 3, GL_FLOAT, false, sizeof(Vertex), (void*)sizeof(glm::vec3));
-	glVertexAttribPointer(2, 3, GL_FLOAT, false, sizeof(Vertex), (void*)sizeof(glm::vec3));
+	glVertexAttribPointer(2, 3, GL_FLOAT, false, sizeof(Vertex), (void*)(sizeof(glm::vec3)*2));
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ibo);
 	glDrawElements(GL_TRIANGLES, m_indicesCount, GL_UNSIGNED_INT, 0);

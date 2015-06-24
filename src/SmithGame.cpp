@@ -47,7 +47,7 @@ void SmithGame::Update()
 glm::mat4 VP;
 void SmithGame::Render()
 {
-	VP = m_projection * glm::lookAt(CurrentView->GetEyePos(), CurrentView->GetEyeTarget(), CurrentView->GetEyeUp());
+	VP = m_projection * glm::lookAt(CurrentView->GetEyePos(), CurrentView->GetEyeTarget(), CurrentView->GetEyeUp()) * glm::rotate(glm::mat4(), 0.3f, glm::vec3(1,0,0));
 	if (CurrentView->RenderScene)
 	{
 		CurrentScene->Render(VP);
@@ -57,9 +57,14 @@ void SmithGame::Render()
 
 int main()
 {
-	Engine engine(1600, 900, "Smith Game 3D");
 	{
-		SmithGame game;
-		engine.Run(&game);
+		Engine engine(1600, 900, "Smith Game 3D"); //It really looks like a scope :D
+		{
+			SmithGame game;
+			engine.Run(&game);
+		}
 	}
+
+	std::string line;
+	std::getline(std::cin, line);
 }

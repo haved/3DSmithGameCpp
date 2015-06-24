@@ -11,5 +11,6 @@ public:
 	void Update();
 	void Render(glm::mat4& VP);
 	Mesh* m;
+	Mesh* m2;
 };
 

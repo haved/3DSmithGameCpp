@@ -9,6 +9,7 @@ BasicShader::BasicShader()
 	MVPId = m_shader->GetUniformLocation("MVP");
 	colorId = m_shader->GetUniformLocation("color");
 	BasicShaderInstance = this;
+	SetModelspaceMatrix(glm::mat4());
 }
 
 BasicShader::~BasicShader()
