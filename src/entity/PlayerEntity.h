@@ -8,7 +8,7 @@
 class PlayerEntity : public Entity
 {
 public:
-	PlayerEntity(float x, float y, std::shared_ptr<Mesh> mesh);
+	PlayerEntity(float x, float y, std::shared_ptr<Mesh> mesh, float xSize, float ySize);
 	~PlayerEntity();
 	void Update(Scene* scene);
 	void Render(Scene* scene, glm::mat4& VP);

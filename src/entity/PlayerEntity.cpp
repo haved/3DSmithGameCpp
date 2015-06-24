@@ -6,11 +6,13 @@
 
 #define WalkSpeed 100.0f
 #define Friction 8.0f
-PlayerEntity::PlayerEntity(float x, float y, std::shared_ptr<Mesh> mesh)
+PlayerEntity::PlayerEntity(float x, float y, std::shared_ptr<Mesh> mesh, float xSize, float ySize)
 {
 	m_mesh = mesh;
 	pos.x = x;
 	pos.y = y;
+	solidXSize = xSize / 2;
+	solidYSize = ySize / 2;
 	UpdateModelspace();
 }
 
@@ -39,8 +41,7 @@ void PlayerEntity::Update(Scene* scene)
 		speed /= l;
 		l -= l * Friction * Global.DeltaTime;
 		speed *= l;
-		pos.x += speed.x * Global.DeltaTime;
-		pos.y += speed.y * Global.DeltaTime;
+		MoveAsSolid(scene, speed.x*Global.DeltaTime, speed.y*Global.DeltaTime);
 	}
 	else if (l > 0)
 		speed = glm::vec2();

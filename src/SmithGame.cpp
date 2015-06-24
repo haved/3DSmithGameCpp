@@ -43,12 +43,12 @@ Scene* SmithGame::GetGameScene()
 	m_gameScene = new Scene();
 
 	std::shared_ptr<Mesh> wall = std::make_shared<Mesh>(RES_PATH + "mesh/wall.ply");
-	m_gameScene->AddEntity(new MeshEntity(wall, 0, 10, 0, -0.2f, 0, 0));
-	m_gameScene->AddEntity(new MeshEntity(wall, 0, -10, 0, -0.2f, 0, PI));
-	m_gameScene->AddEntity(new MeshEntity(wall, 15, 0, 0, -0.2f, 0, -PI / 2));
-	m_gameScene->AddEntity(new MeshEntity(wall, -15, 0, 0, -0.2f, 0, PI / 2));
+	m_gameScene->AddEntity(new MeshEntity(wall, 0, 10, 0, -0.2f, 0, 0, 30, 1));
+	m_gameScene->AddEntity(new MeshEntity(wall, 0, -10, 0, -0.2f, 0, PI, 30, 1));
+	m_gameScene->AddEntity(new MeshEntity(wall, 15, 0, 0, -0.2f, 0, -PI / 2, 1, 20));
+	m_gameScene->AddEntity(new MeshEntity(wall, -15, 0, 0, -0.2f, 0, PI / 2, 1, 20));
 	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>(RES_PATH + "mesh/floor.ply"), 0, 0, 0));
-	Player = new PlayerEntity(-10, 0, std::make_shared<Mesh>(RES_PATH + "mesh/player.ply"));
+	Player = new PlayerEntity(-10, 0, std::make_shared<Mesh>(RES_PATH + "mesh/player.ply"), 4, 3);
 	m_gameScene->AddEntity(Player);
 
 	return m_gameScene;

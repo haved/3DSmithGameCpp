@@ -16,5 +16,16 @@ public:
 protected:
 	glm::mat4 modelspace;
 	void UpdateModelspace();
+	void MoveAsSolid(Scene* scene, float xMove, float yMove);
+public:
+	bool isSolid(){ return solid; };
+	float GetX1(){ return pos.x - solidXSize; }
+	float GetX2(){ return pos.x + solidXSize; }
+	float GetY1(){ return pos.y - solidYSize; }
+	float GetY2(){ return pos.y + solidYSize; }
+protected:
+	bool solid=false;
+	float solidXSize=0;
+	float solidYSize=0;
 };
 

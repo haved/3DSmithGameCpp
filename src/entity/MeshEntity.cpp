@@ -9,11 +9,32 @@ MeshEntity::MeshEntity(std::shared_ptr<Mesh> mesh, float x, float y, float z)
 	UpdateModelspace();
 }
 
+MeshEntity::MeshEntity(std::shared_ptr<Mesh> mesh, float x, float y, float z, float xSize, float ySize)
+{
+	m_mesh = mesh;
+	pos = glm::vec3(x, y, z);
+	solidXSize = xSize / 2;
+	solidYSize = ySize / 2;
+	solid = true;
+	UpdateModelspace();
+}
+
 MeshEntity::MeshEntity(std::shared_ptr<Mesh> mesh, float x, float y, float z, float rotX, float rotY, float rotZ)
 {
 	m_mesh = mesh;
 	pos = glm::vec3(x, y, z);
 	rot = glm::vec3(rotX, rotY, rotZ);
+	UpdateModelspace();
+}
+
+MeshEntity::MeshEntity(std::shared_ptr<Mesh> mesh, float x, float y, float z, float rotX, float rotY, float rotZ, float xSize, float ySize)
+{
+	m_mesh = mesh;
+	pos = glm::vec3(x, y, z);
+	rot = glm::vec3(rotX, rotY, rotZ);
+	solidXSize = xSize / 2;
+	solidYSize = ySize / 2;
+	solid = true;
 	UpdateModelspace();
 }
 
