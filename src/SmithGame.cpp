@@ -7,6 +7,10 @@
 #include "Scene.h"
 #include "SmithingView.h"
 #include "entity/MeshEntity.h"
+#include "entity/PlayerEntity.h"
+
+#define PI 3.1415f
+const std::string RES_PATH = "../SmithGame3D/res/";
 
 SmithGame::SmithGame() {}
 
@@ -16,28 +20,43 @@ void SmithGame::Init()
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
 
-	m_gameScene = new Scene();
-
-	//m_gameScene->AddEntity();
-	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>("../SmithGame3D/res/mesh/player.ply"), 0, 0, 0, 0, 0, 3.1415f));
-
-	m_menuScene = new Scene();
-	CurrentScene = m_gameScene;
-	CurrentView = std::make_shared<SmithingView>(this);
-	m_basicShaderInstance = std::make_unique<BasicShader>();
+	//m_menuScene = new Scene();
+	CurrentScene = GetGameScene();
+	CurrentView = std::make_unique<SmithingView>(this);
+	m_basicShaderInstance = std::make_unique<BasicShader>(RES_PATH + "shaders/");
+	std::cout << "SmithGame.Init() Finished!" << std::endl;
 }
 
 SmithGame::~SmithGame()
 {
 	std::cout << "~SmithGame()" << std::endl;
-	delete m_gameScene;
-	delete m_menuScene;
+	if (m_gameScene)
+		delete m_gameScene;
+	if (m_menuScene)
+		delete m_menuScene;
+}
+
+Scene* SmithGame::GetGameScene()
+{
+	if (m_gameScene)
+		return m_gameScene;
+	m_gameScene = new Scene();
+
+	std::shared_ptr<Mesh> wall = std::make_shared<Mesh>(RES_PATH + "mesh/wall.ply");
+	m_gameScene->AddEntity(new MeshEntity(wall, 0, 10, 0, -0.2f, 0, 0));
+	m_gameScene->AddEntity(new MeshEntity(wall, 0, -10, 0, -0.2f, 0, PI));
+	m_gameScene->AddEntity(new MeshEntity(wall, 15, 0, 0, -0.2f, 0, -PI / 2));
+	m_gameScene->AddEntity(new MeshEntity(wall, -15, 0, 0, -0.2f, 0, PI / 2));
+	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>(RES_PATH + "mesh/floor.ply"), 0, 0, 0));
+	m_gameScene->AddEntity(new PlayerEntity(-10, 0, std::make_shared<Mesh>(RES_PATH + "mesh/player.ply")));
+
+	return m_gameScene;
 }
 
 void SmithGame::Resize(int width, int height)
 {
 	glViewport(0, 0, width, height);
-	m_projection = glm::perspective(3.1415f / 180 * 40, (float)width / height, 0.1f, 60.0f);
+	m_projection = glm::perspective(3.1415f / 180 * 40, (float)width / height, 0.1f, 50.0f);
 }
 
 void SmithGame::Update()
@@ -52,7 +71,7 @@ void SmithGame::Update()
 glm::mat4 VP;
 void SmithGame::Render()
 {
-	VP = m_projection * glm::lookAt(CurrentView->GetEyePos(), CurrentView->GetEyeTarget(), CurrentView->GetEyeUp()) * glm::rotate(glm::mat4(), 0.3f, glm::vec3(1,0,0));
+	VP = m_projection * glm::lookAt(CurrentView->GetEyePos(), CurrentView->GetEyeTarget(), CurrentView->GetEyeUp());
 	if (CurrentView->RenderScene)
 	{
 		CurrentScene->Render(VP);

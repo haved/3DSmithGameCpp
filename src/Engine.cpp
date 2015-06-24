@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "SmithGame.h"
 #include "rendering/Mesh.h"
+#include "GlobalFields.h"
 
 #include <iostream>
 #include <GL/glew.h>
@@ -39,9 +40,12 @@ void Engine::Run(SmithGame* game)
 
 	glClearColor(0, 0.5f, 1, 1);
 
+	sf::Clock clock;
+
 	bool running = true;
 	while (running)
 	{
+		DeltaTime = clock.restart().asSeconds();
 		sf::Event event;
 		while (m_window->pollEvent(event))
 		{
@@ -58,5 +62,18 @@ void Engine::Run(SmithGame* game)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		game->Render();
 		m_window->display();
+		CountFPS();
+	}
+}
+
+void Engine::CountFPS()
+{
+	frames++;
+	timePassed += DeltaTime;
+	if (timePassed > 2)
+	{
+		std::cout << "FPS: " << frames / timePassed * 2 << std::endl;
+		timePassed = 0;
+		frames = 0;
 	}
 }

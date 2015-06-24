@@ -13,11 +13,11 @@ const glm::vec3 unitZ(0, 0, 1);
 void Entity::UpdateModelspace()
 {
 	modelspace = glm::mat4();
-	if (rot.x!=0)
-		modelspace = glm::rotate(modelspace, rot.x, unitX);
-	if (rot.y != 0)
-		modelspace = glm::rotate(modelspace, rot.y, unitY);
+	modelspace = glm::translate(modelspace, pos);
 	if (rot.z != 0)
 		modelspace = glm::rotate(modelspace, rot.z, unitZ);
-	modelspace=glm::translate(modelspace, pos);
+	if (rot.y != 0)
+		modelspace = glm::rotate(modelspace, rot.y, unitY);
+	if (rot.x != 0)
+		modelspace = glm::rotate(modelspace, rot.x, unitX);
 }

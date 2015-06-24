@@ -13,4 +13,8 @@ public:
 	void Run(SmithGame* game);
 protected:
 	sf::Window* m_window;
+private:
+	float timePassed=0;
+	int frames=0;
+	void CountFPS();
 };

@@ -18,10 +18,12 @@ public:
 	void Render();
 	Scene* CurrentScene;
 	std::shared_ptr<IView> CurrentView;
+	Scene* GetMenuScene();
+	Scene* GetGameScene();
 private:
 	glm::mat4 m_projection;
-	Scene* m_menuScene;
-	Scene* m_gameScene;
+	Scene* m_menuScene = 0;
+	Scene* m_gameScene = 0;
 	std::unique_ptr<BasicShader> m_basicShaderInstance;
 };
 

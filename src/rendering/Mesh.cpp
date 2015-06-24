@@ -16,8 +16,6 @@ Mesh::Mesh(const std::string& name)
 		assert(false);
 	}
 	
-	std::cout << "The file '" << name << "' could be opened" << std::endl;
-
 	std::string line;
 
 	if (file.good())

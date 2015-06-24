@@ -3,9 +3,9 @@
 
 SmithingView::SmithingView(SmithGame* game)
 {
-	SmithingView::m_game = game;
-	IView::UpdateScene = false;
-	IView::RenderScene = true;
+	m_game = game;
+	UpdateScene = true;
+	RenderScene = true;
 }
 
 SmithingView::~SmithingView(){}

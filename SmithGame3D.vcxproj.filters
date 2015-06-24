@@ -48,6 +48,12 @@
     <ClInclude Include="src\entity\MeshEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\GlobalFields.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entity\PlayerEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine.cpp">
@@ -75,6 +81,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\entity\MeshEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GlobalFields.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entity\PlayerEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

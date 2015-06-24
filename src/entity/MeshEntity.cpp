@@ -1,3 +1,4 @@
+#include "../GlobalFields.h"
 #include "MeshEntity.h"
 #include "../rendering/BasicShader.h"
 
@@ -21,8 +22,6 @@ MeshEntity::~MeshEntity()
 }
 
 void MeshEntity::Update(Scene* scene){}
-
-extern BasicShader* BasicShaderInstance;
 
 void MeshEntity::Render(Scene* scene, glm::mat4& VP)
 {

@@ -85,6 +85,8 @@
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\entity\Entity.h" />
     <ClInclude Include="src\entity\MeshEntity.h" />
+    <ClInclude Include="src\entity\PlayerEntity.h" />
+    <ClInclude Include="src\GlobalFields.h" />
     <ClInclude Include="src\IView.h" />
     <ClInclude Include="src\rendering\BasicShader.h" />
     <ClInclude Include="src\rendering\Mesh.h" />
@@ -97,6 +99,8 @@
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\entity\Entity.cpp" />
     <ClCompile Include="src\entity\MeshEntity.cpp" />
+    <ClCompile Include="src\entity\PlayerEntity.cpp" />
+    <ClCompile Include="src\GlobalFields.cpp" />
     <ClCompile Include="src\rendering\BasicShader.cpp" />
     <ClCompile Include="src\rendering\Mesh.cpp" />
     <ClCompile Include="src\rendering\Shader.cpp" />
