@@ -12,12 +12,12 @@ SmithingView::~SmithingView(){}
 
 glm::vec3 SmithingView::GetEyePos()
 {
-	return glm::vec3(0, 0, 40);
+	return glm::vec3(0, -10, 40);
 }
 
 glm::vec3 SmithingView::GetEyeTarget()
 {
-	return glm::vec3(0, 0, 0);
+	return glm::vec3(0, 0, 1.73f);
 }
 
 glm::vec3 UP = glm::vec3(0, 1, 0);

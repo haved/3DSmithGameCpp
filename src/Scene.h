@@ -2,6 +2,9 @@
 
 #include <glm/glm.hpp>
 #include "rendering/Mesh.h"
+#include <vector>
+#include <memory>
+#include "entity/Entity.h"
 
 class Scene
 {
@@ -10,7 +13,7 @@ public:
 	~Scene();
 	void Update();
 	void Render(glm::mat4& VP);
-	Mesh* m;
-	Mesh* m2;
+	std::vector<std::unique_ptr<Entity>> entities;
+	void AddEntity(Entity* entity);
 };
 

@@ -8,7 +8,15 @@
 Engine::Engine(int width, int height, const std::string& name)
 {
 	std::cout << "Engine()" << std::endl;
-	m_window = new sf::Window(sf::VideoMode(width, height), name);
+
+	sf::ContextSettings settings;
+	settings.depthBits = 24;
+	settings.stencilBits = 8;
+	settings.antialiasingLevel = 8;
+	settings.majorVersion = 3;
+	settings.minorVersion = 0;
+
+	m_window = new sf::Window(sf::VideoMode(width, height), name, sf::Style::Default, settings);
 	m_window->setVerticalSyncEnabled(true);
 	if (glewInit() != GLEW_OK)
 		std::cout << "Filed to initialize glew. This WILL end badly!" << std::endl;
@@ -29,7 +37,7 @@ void Engine::Run(SmithGame* game)
 		game->Resize(size.x, size.y);
 	}
 
-	glClearColor(1, 0.5f, 1, 1);
+	glClearColor(0, 0.5f, 1, 1);
 
 	bool running = true;
 	while (running)

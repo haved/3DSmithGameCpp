@@ -6,6 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "Scene.h"
 #include "SmithingView.h"
+#include "entity/MeshEntity.h"
 
 SmithGame::SmithGame() {}
 
@@ -16,6 +17,10 @@ void SmithGame::Init()
 	glEnable(GL_DEPTH_TEST);
 
 	m_gameScene = new Scene();
+
+	//m_gameScene->AddEntity();
+	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>("../SmithGame3D/res/mesh/player.ply"), 0, 0, 0, 0, 0, 3.1415f));
+
 	m_menuScene = new Scene();
 	CurrentScene = m_gameScene;
 	CurrentView = std::make_shared<SmithingView>(this);

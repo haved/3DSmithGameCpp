@@ -4,6 +4,7 @@
 
 Shader::Shader(const std::string& vertexShader, const std::string& fragmentShader)
 {
+	std::cout << "Shader()" << std::endl;
 	ProgramID = glCreateProgram();
 	GLuint vertexShaderID = CreateShader(LoadShader(vertexShader), GL_VERTEX_SHADER);
 	GLuint fragmentShaderID = CreateShader(LoadShader(fragmentShader), GL_FRAGMENT_SHADER);
@@ -23,6 +24,7 @@ Shader::Shader(const std::string& vertexShader, const std::string& fragmentShade
 
 Shader::~Shader()
 {
+	std::cout << "~Shader()" << std::endl;
 	glDeleteProgram(ProgramID);
 }
 
