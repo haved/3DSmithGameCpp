@@ -7,6 +7,10 @@ public:
 	float OrthoMouseY;
 	float RelativeMouseX;
 	float RelativeMouseY;
+	bool UpKeyDown;
+	bool DownKeyDown;
+	bool LeftKeyDown;
+	bool RightKeyDown;
 };
 
 extern Input InputState;
