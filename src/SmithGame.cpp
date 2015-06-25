@@ -35,7 +35,7 @@ void SmithGame::Init()
 
 	//Game, Scene and View
 	CurrentScene = GetMenuScene();
-	CurrentView = std::make_unique<MainMenuView>(this);
+	SetView(std::make_unique<MainMenuView>(this));
 	std::cout << "SmithGame.Init() Finished!" << std::endl;
 }
 
@@ -53,13 +53,15 @@ SmithGame::~SmithGame()
 
 void SmithGame::NewGame()
 {
-	if (m_menuScene)
-	{
-		delete m_menuScene;
-		m_menuScene = 0;
-	}
-	CurrentScene = GetGameScene();
-	CurrentView = std::make_unique<SmithingView>(this);
+	DeleteMenuScene();
+	CurrentScene = GetSmithingScene();
+	SetView(std::make_unique<SmithingView>(this));
+}
+
+void SmithGame::SetView(std::shared_ptr<IView> newView)
+{
+	newView->OnViewUsed(CurrentView);
+	CurrentView = newView;
 }
 
 Scene* SmithGame::GetMenuScene()
@@ -74,7 +76,16 @@ Scene* SmithGame::GetMenuScene()
 	return m_menuScene;
 }
 
-Scene* SmithGame::GetGameScene()
+void SmithGame::DeleteMenuScene()
+{
+	if (m_menuScene)
+	{
+		delete m_menuScene;
+		m_menuScene = 0;
+	}
+}
+
+Scene* SmithGame::GetSmithingScene()
 {
 	if (m_gameScene)
 		return m_gameScene;
@@ -99,6 +110,15 @@ Scene* SmithGame::GetGameScene()
 	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>(RES_PATH + "mesh/mailboxBox.ply"), 12.5f, 9.5f, 2.4f, 3, 2));
 
 	return m_gameScene;
+}
+
+void SmithGame::DeleteSmithingScene()
+{
+	if (m_gameScene)
+	{
+		delete m_gameScene;
+		m_gameScene = 0;
+	}
 }
 
 void SmithGame::Resize(int width, int height)

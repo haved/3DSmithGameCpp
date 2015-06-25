@@ -1,6 +1,9 @@
 #include "SmithingView.h"
 #include "SmithGame.h"
 #include "entity/PlayerEntity.h"
+#include "util/Input.h"
+#include <memory>
+#include "PauseView.h"
 
 SmithingView::SmithingView(SmithGame* game)
 {
@@ -29,7 +32,8 @@ glm::vec3 SmithingView::GetEyeUp()
 
 void SmithingView::UpdateView()
 {
-
+	if (InputState.ExitPressed)
+		m_game->SetView(std::make_shared<PauseView>(m_game));
 }
 
 void SmithingView::RenderView(glm::mat4& VP)

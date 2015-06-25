@@ -20,11 +20,14 @@ public:
 	void Update();
 	void Render();
 	void NewGame();
+	void SetView(std::shared_ptr<IView> newView);
 	Scene* CurrentScene;
 	std::shared_ptr<IView> CurrentView;
 	PlayerEntity* Player;
 	Scene* GetMenuScene();
-	Scene* GetGameScene();
+	Scene* GetSmithingScene();
+	void DeleteSmithingScene();
+	void DeleteMenuScene();
 private:
 	glm::mat4 m_projection;
 	Scene* m_menuScene = 0;

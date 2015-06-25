@@ -12,8 +12,10 @@ public:
 	bool LeftKeyDown;
 	bool RightKeyDown;
 	bool MousePressed;
+	bool ExitPressed;
 private:
 	bool m_prevMousePressed;
+	bool m_prevExitPressed;
 };
 
 extern Input InputState;

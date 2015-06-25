@@ -6,27 +6,26 @@
 MainMenuView::MainMenuView(SmithGame* game)
 {
 	m_game = game;
+	m_bar = new MenuBar();
 	UpdateScene = false;
 	RenderScene = true;
 }
 
 MainMenuView::~MainMenuView()
 {
-
+	delete m_bar;
 }
 
 void MainMenuView::UpdateView()
 {
+	m_bar->Update();
 	if (InputState.MousePressed)
 		m_game->NewGame();
 }
 
-glm::vec4 color(0, 0, 0, 0.7f);
-float barXPos = 100;
-float barWidth = 240;
-//float optionHeight = 40;
+glm::vec4 MAINMENU_gradient(0, 0, 0, 0.7f);
 void MainMenuView::RenderView(glm::mat4& VP)
 {
-	Global.OrthoRenderingEngine->FillScreenWithColor(color);
-	Global.OrthoRenderingEngine->FillColoredRectangle(glm::vec4(0, 0, 0, 1), barXPos, 0, barWidth, Global.OrthoRenderingEngine->GetOrthoHeight());
+	Global.OrthoRenderingEngine->FillScreenWithColor(MAINMENU_gradient);
+	m_bar->Render();
 }
