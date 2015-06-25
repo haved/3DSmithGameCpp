@@ -22,12 +22,16 @@ void SmithGame::Init()
 	//GL-stuff
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SOURCE1_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	//Shaders
-	m_basicShaderInstance = std::make_unique<BasicShader>(RES_PATH + "shaders/");
-	m_colorShaderInstance = std::make_unique<ColorShader>(RES_PATH + "shaders/");
+	m_basicShaderInstance = new BasicShader(RES_PATH + "shaders/");
+	m_colorShaderInstance = new ColorShader(RES_PATH + "shaders/");
+
+	//Rendering engines
+	m_orthoRender = new OrthoRenderingEngine();
 
 	//Game, Scene and View
 	CurrentScene = GetMenuScene();
@@ -42,6 +46,9 @@ SmithGame::~SmithGame()
 		delete m_gameScene;
 	if (m_menuScene)
 		delete m_menuScene;
+	delete m_basicShaderInstance;
+	delete m_colorShaderInstance;
+	delete m_orthoRender;
 }
 
 Scene* SmithGame::GetMenuScene()
@@ -87,6 +94,7 @@ void SmithGame::Resize(int width, int height)
 {
 	glViewport(0, 0, width, height);
 	m_projection = glm::perspective(3.1415f / 180 * 40, (float)width / height, 0.1f, 50.0f);
+	m_orthoRender->OnResize(width, height);
 }
 
 void SmithGame::Update()
@@ -119,6 +127,8 @@ int main()
 		}
 	}
 
+	//Just to make the console stop.
+	std::cout << "Program finished properly. Hit enter to continue" << std::endl;
 	std::string line;
 	std::getline(std::cin, line);
 }

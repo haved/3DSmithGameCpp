@@ -93,6 +93,7 @@
     <ClInclude Include="src\rendering\BasicShader.h" />
     <ClInclude Include="src\rendering\ColorShader.h" />
     <ClInclude Include="src\rendering\Mesh.h" />
+    <ClInclude Include="src\rendering\OrthoRenderingEngine.h" />
     <ClInclude Include="src\rendering\Shader.h" />
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\SmithGame.h" />
@@ -110,6 +111,7 @@
     <ClCompile Include="src\rendering\BasicShader.cpp" />
     <ClCompile Include="src\rendering\ColorShader.cpp" />
     <ClCompile Include="src\rendering\Mesh.cpp" />
+    <ClCompile Include="src\rendering\OrthoRenderingEngine.cpp" />
     <ClCompile Include="src\rendering\Shader.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\SmithGame.cpp" />

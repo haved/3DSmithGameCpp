@@ -4,6 +4,7 @@
 #include <memory>
 #include "rendering/BasicShader.h"
 #include "rendering/ColorShader.h"
+#include "rendering/OrthoRenderingEngine.h"
 
 class Scene;
 class IView;
@@ -27,7 +28,8 @@ private:
 	glm::mat4 m_projection;
 	Scene* m_menuScene = 0;
 	Scene* m_gameScene = 0;
-	std::unique_ptr<BasicShader> m_basicShaderInstance;
-	std::unique_ptr<ColorShader> m_colorShaderInstance;
+	OrthoRenderingEngine* m_orthoRender;
+	BasicShader* m_basicShaderInstance;
+	ColorShader* m_colorShaderInstance;
 };
 

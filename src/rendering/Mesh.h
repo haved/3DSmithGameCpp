@@ -31,7 +31,7 @@ struct Vertex {
 		color.z = b;
 		normal = glm::vec3(0, 0, 1);
 	}
-	Vertex(float x, float y, float z, float r, float g, float b, float nx, float ny, float nz)
+	Vertex(float x, float y, float z, float nx, float ny, float nz, float r, float g, float b)
 	{
 		pos.x = x;
 		pos.y = y;
