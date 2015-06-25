@@ -13,6 +13,8 @@ sf::Keyboard::Key RIGHT_KEY = sf::Keyboard::D;
 
 void Input::Update()
 {
+	if (!Global.UsedWindow->hasFocus())
+		return;
 	sf::Vector2i pos = sf::Mouse::getPosition(*Global.UsedWindow);
 	OrthoMouseX = (float)pos.x;
 	OrthoMouseY = (float)pos.y;
@@ -22,4 +24,6 @@ void Input::Update()
 	DownKeyDown = sf::Keyboard::isKeyPressed(DOWN_KEY);
 	LeftKeyDown = sf::Keyboard::isKeyPressed(LEFT_KEY);
 	RightKeyDown = sf::Keyboard::isKeyPressed(RIGHT_KEY);
+	MousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Left)&&(!m_prevMousePressed&RelativeMouseX>-1&RelativeMouseX<1&RelativeMouseY>-1&RelativeMouseY<1);
+	m_prevMousePressed = MousePressed;
 }

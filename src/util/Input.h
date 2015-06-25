@@ -11,6 +11,9 @@ public:
 	bool DownKeyDown;
 	bool LeftKeyDown;
 	bool RightKeyDown;
+	bool MousePressed;
+private:
+	bool m_prevMousePressed;
 };
 
 extern Input InputState;

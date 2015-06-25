@@ -51,6 +51,17 @@ SmithGame::~SmithGame()
 	delete m_orthoRender;
 }
 
+void SmithGame::NewGame()
+{
+	if (m_menuScene)
+	{
+		delete m_menuScene;
+		m_menuScene = 0;
+	}
+	CurrentScene = GetGameScene();
+	CurrentView = std::make_unique<SmithingView>(this);
+}
+
 Scene* SmithGame::GetMenuScene()
 {
 	if (m_menuScene)

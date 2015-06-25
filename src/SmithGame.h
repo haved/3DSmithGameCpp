@@ -19,6 +19,7 @@ public:
 	void Resize(int width, int height);
 	void Update();
 	void Render();
+	void NewGame();
 	Scene* CurrentScene;
 	std::shared_ptr<IView> CurrentView;
 	PlayerEntity* Player;

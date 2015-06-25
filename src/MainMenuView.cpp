@@ -1,5 +1,7 @@
 #include "MainMenuView.h"
 #include "GlobalFields.h"
+#include "util/Input.h"
+#include "SmithGame.h"
 
 MainMenuView::MainMenuView(SmithGame* game)
 {
@@ -15,7 +17,8 @@ MainMenuView::~MainMenuView()
 
 void MainMenuView::UpdateView()
 {
-
+	if (InputState.MousePressed)
+		m_game->NewGame();
 }
 
 glm::vec4 color(0, 0, 0, 0.7f);

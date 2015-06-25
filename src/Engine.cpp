@@ -50,7 +50,7 @@ void Engine::Run(SmithGame* game)
 	while (running)
 	{
 		float f = clock.restart().asSeconds();
-		if (f < 0.01f)
+		if (f < 0.1f)
 			Global.DeltaTime = f;
 		Global.ElapsedTime = elapsed.getElapsedTime().asSeconds();
 		InputState.Update();
