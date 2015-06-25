@@ -1,3 +1,5 @@
+#pragma once
+
 #include "rendering/BasicShader.h"
 #include "rendering/ColorShader.h"
 #include "rendering/OrthoRenderingEngine.h"
