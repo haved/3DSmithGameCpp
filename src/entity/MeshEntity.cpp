@@ -2,6 +2,11 @@
 #include "MeshEntity.h"
 #include "../rendering/BasicShader.h"
 
+MeshEntity::MeshEntity(std::shared_ptr<Mesh> mesh)
+{
+	m_mesh = mesh;
+}
+
 MeshEntity::MeshEntity(std::shared_ptr<Mesh> mesh, float x, float y, float z)
 {
 	m_mesh = mesh;

@@ -3,12 +3,15 @@
 #include "../GlobalFields.h"
 #include "../util/Input.h"
 #include <iostream>
+#include <GL/glew.h>
 
 #define WalkSpeed 100.0f
 #define Friction 8.0f
-PlayerEntity::PlayerEntity(float x, float y, std::shared_ptr<Mesh> mesh, float xSize, float ySize)
+PlayerEntity::PlayerEntity(float x, float y, std::shared_ptr<Mesh> mesh, std::shared_ptr<Mesh> shadow, glm::vec4& shadowColor, float xSize, float ySize)
 {
 	m_mesh = mesh;
+	m_shadow = shadow;
+	m_shadowColor = shadowColor;
 	pos.x = x;
 	pos.y = y;
 	solidXSize = xSize / 2;
@@ -52,6 +55,12 @@ void PlayerEntity::Update(Scene* scene)
 
 void PlayerEntity::Render(Scene* scene, glm::mat4& VP)
 {
+	Global.ColorShaderInstance->Bind();
+	Global.ColorShaderInstance->SetMVP(VP*modelspace);
+	Global.ColorShaderInstance->SetColor(m_shadowColor);
+	glDisable(GL_DEPTH_TEST);
+	m_shadow->Draw();
+	glEnable(GL_DEPTH_TEST);
 	Global.BasicShaderInstance->Bind();
 	Global.BasicShaderInstance->SetMVP(VP*modelspace);
 	Global.BasicShaderInstance->SetModelspaceMatrix(modelspace);

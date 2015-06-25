@@ -2,7 +2,7 @@
 #include "SmithGame.h"
 #include "rendering/Mesh.h"
 #include "GlobalFields.h"
-#include "util/Input.h";
+#include "util/Input.h"
 
 #include <iostream>
 #include <GL/glew.h>
@@ -49,7 +49,9 @@ void Engine::Run(SmithGame* game)
 	bool running = true;
 	while (running)
 	{
-		Global.DeltaTime = clock.restart().asSeconds();
+		float f = clock.restart().asSeconds();
+		if (f < 0.01f)
+			Global.DeltaTime = f;
 		Global.ElapsedTime = elapsed.getElapsedTime().asSeconds();
 		InputState.Update();
 

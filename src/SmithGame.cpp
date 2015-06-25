@@ -6,6 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "Scene.h"
 #include "SmithingView.h"
+#include "MainMenuView.h"
 #include "entity/MeshEntity.h"
 #include "entity/PlayerEntity.h"
 #include "entity/BellowEntity.h"
@@ -18,16 +19,19 @@ SmithGame::SmithGame() {}
 void SmithGame::Init()
 {
 	std::cout << "SmithGame.Init()" << std::endl;
+	//GL-stuff
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SOURCE1_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	m_menuScene = new Scene();
-	CurrentScene = GetGameScene();
-	delete m_gameScene;
-	m_gameScene = 0;
-	CurrentScene = GetGameScene();
-	CurrentView = std::make_unique<SmithingView>(this);
+	//Shaders
 	m_basicShaderInstance = std::make_unique<BasicShader>(RES_PATH + "shaders/");
+	m_colorShaderInstance = std::make_unique<ColorShader>(RES_PATH + "shaders/");
+
+	//Game, Scene and View
+	CurrentScene = GetMenuScene();
+	CurrentView = std::make_unique<MainMenuView>(this);
 	std::cout << "SmithGame.Init() Finished!" << std::endl;
 }
 
@@ -40,6 +44,18 @@ SmithGame::~SmithGame()
 		delete m_menuScene;
 }
 
+Scene* SmithGame::GetMenuScene()
+{
+	if (m_menuScene)
+		return m_menuScene;
+
+	m_menuScene = new Scene();
+
+	m_menuScene->AddEntity(new MeshEntity(std::make_shared<Mesh>(RES_PATH + "mesh/menuBG.ply")));
+
+	return m_menuScene;
+}
+
 Scene* SmithGame::GetGameScene()
 {
 	if (m_gameScene)
@@ -48,7 +64,7 @@ Scene* SmithGame::GetGameScene()
 
 	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>(RES_PATH + "mesh/floor.ply"), 0, 0, 0));
 	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>(RES_PATH + "mesh/hatchHole.ply"), -1, 0, 0));
-	Player = new PlayerEntity(4, 0, std::make_shared<Mesh>(RES_PATH + "mesh/player.ply"), 4, 3);
+	Player = new PlayerEntity(4, 0, std::make_shared<Mesh>(RES_PATH + "mesh/player.ply"), std::make_shared<Mesh>(RES_PATH + "mesh/shadow.ply"), glm::vec4(1,1,1,0.5f), 4, 3);
 	m_gameScene->AddEntity(Player);
 	std::shared_ptr<Mesh> wall = std::make_shared<Mesh>(RES_PATH + "mesh/wall.ply");
 	m_gameScene->AddEntity(new MeshEntity(wall, 0, 10, 0, -0.2f, 0, 0, 30, 1));

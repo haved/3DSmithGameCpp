@@ -7,6 +7,7 @@
 class MeshEntity : public Entity
 {
 public:
+	MeshEntity(std::shared_ptr<Mesh> mesh);
 	MeshEntity(std::shared_ptr<Mesh> mesh, float x, float y, float z);
 	MeshEntity(std::shared_ptr<Mesh> mesh, float x, float y, float z, float xSize, float ySize);
 	MeshEntity(std::shared_ptr<Mesh> mesh, float x, float y, float z, float rotX, float rotY, float rotZ);

@@ -11,10 +11,10 @@ public:
 	virtual ~Entity();
 	virtual void Update(Scene* scene) = 0;
 	virtual void Render(Scene* scene, glm::mat4& VP) = 0;
-	glm::vec3 pos;
-	glm::vec3 rot;
+	glm::vec3 pos = glm::vec3(0, 0, 0);
+	glm::vec3 rot = glm::vec3(0, 0, 0);
 protected:
-	glm::mat4 modelspace;
+	glm::mat4 modelspace = glm::mat4();
 	void UpdateModelspace();
 	void MoveAsSolid(Scene* scene, float xMove, float yMove);
 public:

@@ -8,7 +8,7 @@
 class PlayerEntity : public Entity
 {
 public:
-	PlayerEntity(float x, float y, std::shared_ptr<Mesh> mesh, float xSize, float ySize);
+	PlayerEntity(float x, float y, std::shared_ptr<Mesh> mesh, std::shared_ptr<Mesh> shadow, glm::vec4& shadowColor, float xSize, float ySize);
 	~PlayerEntity();
 	void Update(Scene* scene);
 	void Render(Scene* scene, glm::mat4& VP);
@@ -22,6 +22,8 @@ public:
 	};
 private:
 	std::shared_ptr<Mesh> m_mesh;
+	std::shared_ptr<Mesh> m_shadow;
+	glm::vec4 m_shadowColor;
 	glm::vec2 speed;
 };
 
