@@ -13,6 +13,7 @@ public:
 	virtual glm::vec3 GetEyeUp()=0;
 	virtual void UpdateView()=0;
 	virtual void RenderView(glm::mat4& VP)=0;
-	virtual void OnViewUsed(std::shared_ptr<IView> prevView)=0;
+	virtual void PreViewUsed(std::shared_ptr<IView> prevView)=0;
+	virtual void OnViewUsed() = 0;
 };
 

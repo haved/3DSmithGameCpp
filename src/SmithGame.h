@@ -4,7 +4,9 @@
 #include <memory>
 #include "rendering/BasicShader.h"
 #include "rendering/ColorShader.h"
+#include "rendering/TextureShader.h"
 #include "rendering/OrthoRenderingEngine.h"
+#include <SFML/Graphics/Font.hpp>
 
 class Scene;
 class IView;
@@ -35,5 +37,7 @@ private:
 	OrthoRenderingEngine* m_orthoRender;
 	BasicShader* m_basicShaderInstance;
 	ColorShader* m_colorShaderInstance;
+	TextureShader* m_textureShaderInstance;
+	sf::Font* m_defaultFont;
 };
 

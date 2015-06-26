@@ -15,6 +15,7 @@ public:
 	glm::vec3 GetEyeUp();
 	void UpdateView();
 	void RenderView(glm::mat4& VP);
-	void OnViewUsed(std::shared_ptr<IView> prevView){}
+	void PreViewUsed(std::shared_ptr<IView> prevView){}
+	void OnViewUsed(){}
 };
 

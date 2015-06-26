@@ -2,6 +2,7 @@
 
 #include "Mesh.h"
 #include <glm/glm.hpp>
+#include <SFML/Graphics/Texture.hpp>
 
 class OrthoRenderingEngine
 {
@@ -14,6 +15,8 @@ public:
 
 	void FillScreenWithColor(glm::vec4& color);
 	void FillColoredRectangle(glm::vec4& color, float x, float y, float width, float height);
+	void DrawColoredTexture(sf::Texture texture, glm::vec4& color, float x, float y, float width, float height);
+	void DrawFlippedColoredTexture(sf::Texture texture, glm::vec4& color, float x, float y, float width, float height);
 
 	void* operator new(size_t size) { return _aligned_malloc(size, 16); };
 	void operator delete(void* p) { _aligned_free(p); };

@@ -1,9 +1,9 @@
 #include "SmithGame.h"
 #include <iostream>
-#include <SFML/Graphics.hpp>
 #include "Engine.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include "GlobalFields.h"
 #include "Scene.h"
 #include "SmithingView.h"
 #include "MainMenuView.h"
@@ -25,13 +25,20 @@ void SmithGame::Init()
 	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SOURCE1_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_TEXTURE_2D);
+	glActiveTexture(GL_TEXTURE0);
 
 	//Shaders
-	m_basicShaderInstance = new BasicShader(RES_PATH + "shaders/");
-	m_colorShaderInstance = new ColorShader(RES_PATH + "shaders/");
+	const std::string shaderPath = RES_PATH + "shaders/";
+	m_basicShaderInstance = new BasicShader(shaderPath);
+	m_colorShaderInstance = new ColorShader(shaderPath);
+	m_textureShaderInstance = new TextureShader(shaderPath);
 
 	//Rendering engines
 	m_orthoRender = new OrthoRenderingEngine();
+	m_defaultFont = new sf::Font();
+	m_defaultFont->loadFromFile(RES_PATH + "fonts/gisha.ttf");
+	Global.DefaultFont = m_defaultFont;
 
 	//Game, Scene and View
 	CurrentScene = GetMenuScene();
@@ -48,20 +55,23 @@ SmithGame::~SmithGame()
 		delete m_menuScene;
 	delete m_basicShaderInstance;
 	delete m_colorShaderInstance;
+	delete m_textureShaderInstance;
 	delete m_orthoRender;
+	delete m_defaultFont;
 }
 
 void SmithGame::NewGame()
 {
-	//DeleteMenuScene();
+	DeleteMenuScene();
 	CurrentScene = GetSmithingScene();
 	SetView(std::make_unique<SmithingView>(this));
 }
 
 void SmithGame::SetView(std::shared_ptr<IView> newView)
 {
-	newView->OnViewUsed(CurrentView);
+	newView->PreViewUsed(CurrentView);
 	CurrentView = newView;
+	CurrentView->OnViewUsed();
 }
 
 Scene* SmithGame::GetMenuScene()

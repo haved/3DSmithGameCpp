@@ -38,6 +38,7 @@ Engine::~Engine()
 void Engine::Run(SmithGame* game)
 {
 	std::cout << "Engine.Run()" << std::endl;
+
 	game->Init();
 	{
 		sf::Vector2u size = m_window->getSize();

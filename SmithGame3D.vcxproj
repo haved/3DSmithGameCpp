@@ -39,7 +39,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
-    <NuGetPackageImportStamp>a78b2801</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>85470476</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -98,6 +98,7 @@
     <ClInclude Include="src\rendering\Mesh.h" />
     <ClInclude Include="src\rendering\OrthoRenderingEngine.h" />
     <ClInclude Include="src\rendering\Shader.h" />
+    <ClInclude Include="src\rendering\TextureShader.h" />
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\SmithGame.h" />
     <ClInclude Include="src\SmithingView.h" />
@@ -118,6 +119,7 @@
     <ClCompile Include="src\rendering\Mesh.cpp" />
     <ClCompile Include="src\rendering\OrthoRenderingEngine.cpp" />
     <ClCompile Include="src\rendering\Shader.cpp" />
+    <ClCompile Include="src\rendering\TextureShader.cpp" />
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\SmithGame.cpp" />
     <ClCompile Include="src\SmithingView.cpp" />
@@ -135,6 +137,8 @@
     <Import Project="..\packages\rxd_glew.redist.1.10.0.1\build\native\rxd_glew.redist.targets" Condition="Exists('..\packages\rxd_glew.redist.1.10.0.1\build\native\rxd_glew.redist.targets')" />
     <Import Project="..\packages\rxd_glew.1.10.0.1\build\native\rxd_glew.targets" Condition="Exists('..\packages\rxd_glew.1.10.0.1\build\native\rxd_glew.targets')" />
     <Import Project="..\packages\glm.0.9.6.3\build\native\glm.targets" Condition="Exists('..\packages\glm.0.9.6.3\build\native\glm.targets')" />
+    <Import Project="..\packages\sfml-graphics.redist.2.3.0.0\build\native\sfml-graphics.redist.targets" Condition="Exists('..\packages\sfml-graphics.redist.2.3.0.0\build\native\sfml-graphics.redist.targets')" />
+    <Import Project="..\packages\sfml-graphics.2.3.0.0\build\native\sfml-graphics.targets" Condition="Exists('..\packages\sfml-graphics.2.3.0.0\build\native\sfml-graphics.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -147,5 +151,7 @@
     <Error Condition="!Exists('..\packages\rxd_glew.redist.1.10.0.1\build\native\rxd_glew.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rxd_glew.redist.1.10.0.1\build\native\rxd_glew.redist.targets'))" />
     <Error Condition="!Exists('..\packages\rxd_glew.1.10.0.1\build\native\rxd_glew.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\rxd_glew.1.10.0.1\build\native\rxd_glew.targets'))" />
     <Error Condition="!Exists('..\packages\glm.0.9.6.3\build\native\glm.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\glm.0.9.6.3\build\native\glm.targets'))" />
+    <Error Condition="!Exists('..\packages\sfml-graphics.redist.2.3.0.0\build\native\sfml-graphics.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml-graphics.redist.2.3.0.0\build\native\sfml-graphics.redist.targets'))" />
+    <Error Condition="!Exists('..\packages\sfml-graphics.2.3.0.0\build\native\sfml-graphics.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\sfml-graphics.2.3.0.0\build\native\sfml-graphics.targets'))" />
   </Target>
 </Project>

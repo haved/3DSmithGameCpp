@@ -3,6 +3,7 @@
 #include <SFML/Window/Keyboard.hpp>
 
 #include "../GlobalFields.h"
+#include <SFML/Window/Window.hpp>
 
 Input InputState;
 
