@@ -82,6 +82,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\entity\BellowEntity.h" />
     <ClInclude Include="src\entity\Entity.h" />
@@ -121,6 +122,9 @@
     <ClCompile Include="src\SmithGame.cpp" />
     <ClCompile Include="src\SmithingView.cpp" />
     <ClCompile Include="src\util\Input.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SmithGame3D.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

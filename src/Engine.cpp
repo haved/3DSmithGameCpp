@@ -7,7 +7,7 @@
 #include <iostream>
 #include <GL/glew.h>
 
-//#include <vld.h>
+#include <vld.h>
 
 Engine::Engine(int width, int height, const std::string& name)
 {
