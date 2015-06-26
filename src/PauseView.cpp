@@ -3,8 +3,11 @@
 #include "GlobalFields.h"
 #include "util/Input.h"
 
+#include <iostream>
+
 PauseView::PauseView(SmithGame* game)
 {
+	std::cout << "PauseView()" << std::endl;
 	m_game = game;
 	m_bar = new MenuBar();
 	UpdateScene = false;
@@ -13,6 +16,7 @@ PauseView::PauseView(SmithGame* game)
 
 PauseView::~PauseView()
 {
+	std::cout << "~PauseView()" << std::endl;
 	delete m_bar;
 }
 

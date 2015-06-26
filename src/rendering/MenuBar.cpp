@@ -1,13 +1,17 @@
 #include "MenuBar.h"
 #include "../GlobalFields.h"
 
+#include <iostream>
+
 MenuBar::MenuBar()
 {
+	std::cout << "MenuBar()" << std::endl;
 }
 
 
 MenuBar::~MenuBar()
 {
+	std::cout << "~MenuBar()" << std::endl;
 }
 
 #define MENUBAR_barXPos 100

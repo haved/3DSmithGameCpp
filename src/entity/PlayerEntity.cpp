@@ -9,6 +9,7 @@
 #define Friction 8.0f
 PlayerEntity::PlayerEntity(float x, float y, std::shared_ptr<Mesh> mesh, std::shared_ptr<Mesh> shadow, glm::vec4& shadowColor, float xSize, float ySize)
 {
+	std::cout << "PlayerEntity()" << std::endl;
 	m_mesh = mesh;
 	m_shadow = shadow;
 	m_shadowColor = shadowColor;

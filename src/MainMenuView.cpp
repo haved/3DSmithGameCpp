@@ -3,8 +3,11 @@
 #include "util/Input.h"
 #include "SmithGame.h"
 
+#include <iostream>
+
 MainMenuView::MainMenuView(SmithGame* game)
 {
+	std::cout << "MainMenuView()" << std::endl;
 	m_game = game;
 	m_bar = new MenuBar();
 	UpdateScene = false;
@@ -13,6 +16,7 @@ MainMenuView::MainMenuView(SmithGame* game)
 
 MainMenuView::~MainMenuView()
 {
+	std::cout << "~MainMenuView()" << std::endl;
 	delete m_bar;
 }
 

@@ -5,14 +5,20 @@
 #include <memory>
 #include "PauseView.h"
 
+#include <iostream>
+
 SmithingView::SmithingView(SmithGame* game)
 {
+	std::cout << "SmithingView()" << std::endl;
 	m_game = game;
 	UpdateScene = true;
 	RenderScene = true;
 }
 
-SmithingView::~SmithingView(){}
+SmithingView::~SmithingView()
+{
+	std::cout << "~SmithingView()" << std::endl;
+}
 
 glm::vec3 SmithingView::GetEyePos()
 {

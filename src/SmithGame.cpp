@@ -53,7 +53,7 @@ SmithGame::~SmithGame()
 
 void SmithGame::NewGame()
 {
-	DeleteMenuScene();
+	//DeleteMenuScene();
 	CurrentScene = GetSmithingScene();
 	SetView(std::make_unique<SmithingView>(this));
 }

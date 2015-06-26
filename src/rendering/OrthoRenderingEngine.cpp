@@ -2,8 +2,11 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include "../GlobalFields.h"
 
+#include <iostream>
+
 OrthoRenderingEngine::OrthoRenderingEngine()
 {
+	std::cout << "OrthoRenderingEngine()" << std::endl;
 	Vertex vertices[4] = { Vertex(0, 0, 0, 0, 1, 0, 1, 1, 1),
 		Vertex(1, 0, 0, 1, 1, 0, 1, 1, 1),
 		Vertex(1, 1, 0, 1, 0, 0, 1, 1, 1),
@@ -20,6 +23,7 @@ OrthoRenderingEngine::OrthoRenderingEngine()
 
 OrthoRenderingEngine::~OrthoRenderingEngine()
 {
+	std::cout << "~OrthoRenderingEngine()" << std::endl;
 	delete m_flat;
 }
 

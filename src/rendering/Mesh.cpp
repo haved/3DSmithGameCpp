@@ -92,6 +92,8 @@ Mesh::Mesh(const std::string& name)
 	}
 	
 	LoadMeshData(vertices, vertexAmount, &indices[0], indices.size());
+
+	//delete vertices;
 }
 
 void MESH_CalcNormals(Vertex v[], uint32_t i[], uint32_t indexCount)

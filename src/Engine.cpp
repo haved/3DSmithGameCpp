@@ -7,6 +7,8 @@
 #include <iostream>
 #include <GL/glew.h>
 
+//#include <vld.h>
+
 Engine::Engine(int width, int height, const std::string& name)
 {
 	std::cout << "Engine()" << std::endl;
@@ -30,6 +32,7 @@ Engine::~Engine()
 {
 	std::cout << "~Engine()" << std::endl;
 	m_window->close();
+	delete m_window;
 }
 
 void Engine::Run(SmithGame* game)

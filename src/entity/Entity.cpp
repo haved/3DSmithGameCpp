@@ -5,9 +5,13 @@
 
 Entity::Entity()
 {
+	std::cout << "Entity()" << std::endl;
 }
 
-Entity::~Entity(){}
+Entity::~Entity()
+{
+	std::cout << "~Entity()" << std::endl;
+}
 
 const glm::vec3 unitX(1, 0, 0);
 const glm::vec3 unitY(0, 1, 0);
