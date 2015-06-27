@@ -24,6 +24,7 @@ public:
 	void Render();
 	void NewGame();
 	void SetView(std::shared_ptr<IView> newView);
+	void SetView(IView* view);
 	Scene* CurrentScene;
 	std::shared_ptr<IView> CurrentView;
 	PlayerEntity* Player;

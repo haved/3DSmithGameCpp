@@ -80,6 +80,16 @@ void SmithGame::SetView(std::shared_ptr<IView> newView)
 	CurrentView->OnViewUsed();
 }
 
+void PretendToDelete(IView* view)
+{
+	//std::cout << "Pretending to delete" << std::endl;
+}
+
+void SmithGame::SetView(IView* view)
+{
+	SetView(std::shared_ptr<IView>(view, PretendToDelete));
+}
+
 Scene* SmithGame::GetMenuScene()
 {
 	if (m_menuScene)

@@ -55,20 +55,15 @@ void HatchEntity::Render(Scene* scene, glm::mat4& VP)
 	Global.BasicShaderInstance->SetModelspaceMatrix(modelspace);
 	Global.BasicShaderInstance->SetMVP(MVP);
 	m_hatchHoleMesh->Draw();
-	glm::mat4 hatchTransform = m_hatchTranslation * glm::rotate(glm::mat4(), m_hatchRot, glm::vec3(0,1,0));
+	glm::mat4 hatchTransform = glm::rotate(m_hatchTranslation, m_hatchRot, glm::vec3(0, 1, 0));
 	Global.BasicShaderInstance->SetModelspaceMatrix(modelspace*hatchTransform);
 	Global.BasicShaderInstance->SetMVP(MVP*hatchTransform);
 	m_hatchMesh->Draw();
 }
 
-void PretendToDelete(IView* view)
-{
-	std::cout << "Pretending to delete" << std::endl;
-}
-
 void HatchEntity::OnInteractionPerformed(void* source)
 {
-	m_game->SetView(std::shared_ptr<IView>(this, PretendToDelete));
+	m_game->SetView(this);
 }
 
 void HatchEntity::OnViewChanging(std::shared_ptr<IView> prevView)
@@ -86,6 +81,7 @@ void HatchEntity::UpdateView()
 		m_hatchSpeed -= Global.DeltaTime * 8;
 	else
 		m_hatchSpeed -= 4 * m_hatchSpeed * Global.DeltaTime;
+	m_hatchRot += m_hatchSpeed * Global.DeltaTime;
 
 	if (InputState.ExitPressed)
 		m_game->SetView(m_prevView);
