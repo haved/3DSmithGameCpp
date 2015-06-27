@@ -5,12 +5,10 @@
 
 Entity::Entity()
 {
-	std::cout << "Entity()" << std::endl;
 }
 
 Entity::~Entity()
 {
-	std::cout << "~Entity()" << std::endl;
 }
 
 const glm::vec3 unitX(1, 0, 0);

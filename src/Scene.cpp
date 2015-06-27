@@ -11,7 +11,6 @@ Scene::Scene()
 Scene::~Scene()
 {
 	std::cout << "~Scene()" << std::endl;
-
 }
 
 void Scene::AddEntity(Entity* entity)

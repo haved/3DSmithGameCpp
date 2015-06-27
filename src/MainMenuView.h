@@ -13,7 +13,8 @@ public:
 	~MainMenuView();
 	void UpdateView();
 	void RenderView(glm::mat4& VP);
-	void PreViewUsed(std::shared_ptr<IView> prevView){}
+	void OnViewNotUsed();
+	void OnViewChanging(std::shared_ptr<IView> prevView){}
 	void OnViewUsed();
 	glm::vec3 GetEyePos() { return m_eye; }
 	glm::vec3 GetEyeTarget(){ return m_target; }

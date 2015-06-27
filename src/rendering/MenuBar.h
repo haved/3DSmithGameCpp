@@ -7,12 +7,14 @@
 class MenuBar
 {
 public:
-	MenuBar(std::vector<std::string>& buttons);
+	MenuBar();
 	~MenuBar();
+	void SetButtons(std::vector<std::string>& buttons);
+	void RemoveButtons();
 	void Update();
 	void Render();
 private:
 	unsigned int m_buttonCount;
-	sf::RenderTexture** m_textures;
+	sf::RenderTexture** m_textures = 0;
 };
 

@@ -71,7 +71,9 @@ void SmithGame::NewGame()
 
 void SmithGame::SetView(std::shared_ptr<IView> newView)
 {
-	newView->PreViewUsed(CurrentView);
+	if (CurrentView.get())
+		CurrentView->OnViewNotUsed();
+	newView->OnViewChanging(CurrentView);
 	CurrentView = newView;
 	CurrentView->OnViewUsed();
 }

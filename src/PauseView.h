@@ -12,7 +12,8 @@ public:
 	~PauseView();
 	void UpdateView();
 	void RenderView(glm::mat4& VP);
-	void PreViewUsed(std::shared_ptr<IView> prevView) { m_prevView = prevView; }
+	void OnViewNotUsed();
+	void OnViewChanging(std::shared_ptr<IView> prevView) { m_prevView = prevView; }
 	void OnViewUsed();
 	glm::vec3 GetEyePos() { return m_prevView->GetEyePos(); }
 	glm::vec3 GetEyeTarget(){ return m_prevView->GetEyeTarget(); }

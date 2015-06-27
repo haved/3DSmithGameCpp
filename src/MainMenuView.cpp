@@ -11,6 +11,7 @@ MainMenuView::MainMenuView(SmithGame* game)
 {
 	std::cout << "MainMenuView()" << std::endl;
 	m_game = game;
+	m_bar = new MenuBar();
 	UpdateScene = false;
 	RenderScene = true;
 }
@@ -19,17 +20,19 @@ MainMenuView::~MainMenuView()
 {
 	std::cout << "~MainMenuView()" << std::endl;
 	delete m_bar;
-	//m_bar = 0;
 }
 
 void MainMenuView::OnViewUsed()
 {
-	if (m_bar != 0)
-		delete m_bar;
 	std::vector<std::string> buttons;
 	buttons.push_back("ui.button.newgame");
 	buttons.push_back("ui.button.exit");
-	m_bar = new MenuBar(buttons);
+	m_bar->SetButtons(buttons);
+}
+
+void MainMenuView::OnViewNotUsed()
+{
+	m_bar->RemoveButtons();
 }
 
 void MainMenuView::UpdateView()

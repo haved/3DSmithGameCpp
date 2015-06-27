@@ -13,6 +13,10 @@ public:
 	~TextureFloor();
 	void Update(Scene* scene) {}
 	void Render(Scene* scene, glm::mat4& VP);
+
+	void* operator new(size_t size){ return _aligned_malloc(size, 16); };
+	void operator delete(void* p) { _aligned_free(p); };
+
 private:
 	std::shared_ptr<sf::Texture> m_texture;
 	glm::vec2 m_sampleSize;
