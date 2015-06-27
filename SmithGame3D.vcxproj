@@ -103,6 +103,7 @@
     <ClInclude Include="src\SmithGame.h" />
     <ClInclude Include="src\SmithingView.h" />
     <ClInclude Include="src\util\Input.h" />
+    <ClInclude Include="src\util\Localization.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine.cpp" />
@@ -124,6 +125,7 @@
     <ClCompile Include="src\SmithGame.cpp" />
     <ClCompile Include="src\SmithingView.cpp" />
     <ClCompile Include="src\util\Input.cpp" />
+    <ClCompile Include="src\util\Localization.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SmithGame3D.rc" />

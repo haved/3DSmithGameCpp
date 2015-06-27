@@ -6,6 +6,7 @@
 #include "rendering/ColorShader.h"
 #include "rendering/TextureShader.h"
 #include "rendering/OrthoRenderingEngine.h"
+#include "util/Localization.h"
 #include <SFML/Graphics/Font.hpp>
 
 class Scene;
@@ -34,10 +35,11 @@ private:
 	glm::mat4 m_projection;
 	Scene* m_menuScene = 0;
 	Scene* m_gameScene = 0;
-	OrthoRenderingEngine* m_orthoRender;
-	BasicShader* m_basicShaderInstance;
-	ColorShader* m_colorShaderInstance;
-	TextureShader* m_textureShaderInstance;
-	sf::Font* m_defaultFont;
+	std::unique_ptr<OrthoRenderingEngine> m_orthoRender;
+	std::unique_ptr<BasicShader> m_basicShaderInstance;
+	std::unique_ptr<ColorShader> m_colorShaderInstance;
+	std::unique_ptr<TextureShader> m_textureShaderInstance;
+	std::unique_ptr<sf::Font> m_defaultFont;
+	std::unique_ptr<Localization> m_currentLanguage;
 };
 

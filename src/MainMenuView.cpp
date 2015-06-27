@@ -27,8 +27,8 @@ void MainMenuView::OnViewUsed()
 	if (m_bar != 0)
 		delete m_bar;
 	std::vector<std::string> buttons;
-	buttons.push_back("New game");
-	buttons.push_back("Exit");
+	buttons.push_back("ui.button.newgame");
+	buttons.push_back("ui.button.exit");
 	m_bar = new MenuBar(buttons);
 }
 

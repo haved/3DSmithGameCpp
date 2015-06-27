@@ -1,5 +1,6 @@
 #include "MenuBar.h"
 #include "../GlobalFields.h"
+#include "../util/Localization.h"
 
 #include <iostream>
 
@@ -22,7 +23,7 @@ MenuBar::MenuBar(std::vector<std::string>& buttons)
 		m_textures[i] = new sf::RenderTexture();
 		m_textures[i]->create(MENUBAR_barWidth, MENUBAR_optionHeight);
 		m_textures[i]->setSmooth(true);
-		text.setString(buttons[i]);
+		text.setString(CurrentLanguage->m_map[buttons[i]]);
 		text.setPosition((MENUBAR_barWidth-text.getLocalBounds().width)/2, 0);
 		m_textures[i]->draw(text);
 	}

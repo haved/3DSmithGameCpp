@@ -10,6 +10,7 @@
 #include "entity/MeshEntity.h"
 #include "entity/PlayerEntity.h"
 #include "entity/BellowEntity.h"
+#include "util/Localization.h"
 
 #define PI 3.1415f
 const std::string RES_PATH = "../SmithGame3D/res/";
@@ -30,15 +31,19 @@ void SmithGame::Init()
 
 	//Shaders
 	const std::string shaderPath = RES_PATH + "shaders/";
-	m_basicShaderInstance = new BasicShader(shaderPath);
-	m_colorShaderInstance = new ColorShader(shaderPath);
-	m_textureShaderInstance = new TextureShader(shaderPath);
+	m_basicShaderInstance = std::make_unique<BasicShader>(shaderPath);
+	m_colorShaderInstance = std::make_unique<ColorShader>(shaderPath);
+	m_textureShaderInstance = std::make_unique<TextureShader>(shaderPath);
+	
+	//Localization
+	m_currentLanguage = std::make_unique<Localization>();
+	m_currentLanguage->LoadLanguage(RES_PATH + "localization/no_NO.txt");
 
 	//Rendering engines
-	m_orthoRender = new OrthoRenderingEngine();
-	m_defaultFont = new sf::Font();
+	m_orthoRender = std::make_unique<OrthoRenderingEngine>();
+	m_defaultFont = std::make_unique<sf::Font>();
 	m_defaultFont->loadFromFile(RES_PATH + "fonts/gisha.ttf");
-	Global.DefaultFont = m_defaultFont;
+	Global.DefaultFont = m_defaultFont.get();
 
 	//Game, Scene and View
 	CurrentScene = GetMenuScene();
@@ -53,11 +58,6 @@ SmithGame::~SmithGame()
 		delete m_gameScene;
 	if (m_menuScene)
 		delete m_menuScene;
-	delete m_basicShaderInstance;
-	delete m_colorShaderInstance;
-	delete m_textureShaderInstance;
-	delete m_orthoRender;
-	delete m_defaultFont;
 }
 
 void SmithGame::NewGame()

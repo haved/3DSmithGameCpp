@@ -1,4 +1,4 @@
-﻿ui.button.newgame===Nytt Spill
+ui.button.newgame===Nytt Spill
 ui.button.resume===Fortsett
 ui.button.savegame===Lagre Spill
 ui.button.loadgame===Last Inn Spill
