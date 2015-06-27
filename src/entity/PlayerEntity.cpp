@@ -50,6 +50,17 @@ void PlayerEntity::Update(Scene* scene)
 
 	rot.z = glm::atan(-InputState.RelativeMouseY, InputState.RelativeMouseX);
 	UpdateModelspace();
+
+	if (InputState.InteractPressed)
+	{
+		for (unsigned int i = 0; i < scene->entities.size(); i++)
+		{
+			if (scene->entities[i]->interactive)
+			{
+				scene->entities[i]->interactive->OnInteractionPerformed(this);
+			}
+		}
+	}
 }
 
 void PlayerEntity::Render(Scene* scene, glm::mat4& VP)

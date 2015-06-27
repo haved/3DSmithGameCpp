@@ -86,6 +86,8 @@
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\entity\BellowEntity.h" />
     <ClInclude Include="src\entity\Entity.h" />
+    <ClInclude Include="src\entity\HatchEntity.h" />
+    <ClInclude Include="src\entity\InteractiveEntity.h" />
     <ClInclude Include="src\entity\MeshEntity.h" />
     <ClInclude Include="src\entity\PlayerEntity.h" />
     <ClInclude Include="src\GlobalFields.h" />
@@ -110,6 +112,7 @@
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\entity\BellowEntity.cpp" />
     <ClCompile Include="src\entity\Entity.cpp" />
+    <ClCompile Include="src\entity\HatchEntity.cpp" />
     <ClCompile Include="src\entity\MeshEntity.cpp" />
     <ClCompile Include="src\entity\PlayerEntity.cpp" />
     <ClCompile Include="src\GlobalFields.cpp" />

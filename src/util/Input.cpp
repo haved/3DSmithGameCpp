@@ -12,6 +12,7 @@ sf::Keyboard::Key DOWN_KEY = sf::Keyboard::S;
 sf::Keyboard::Key LEFT_KEY = sf::Keyboard::A;
 sf::Keyboard::Key RIGHT_KEY = sf::Keyboard::D;
 sf::Keyboard::Key EXIT_KEY = sf::Keyboard::Escape;
+sf::Keyboard::Key INTERACT_KEY = sf::Keyboard::E;
 
 void Input::Update()
 {
@@ -30,4 +31,6 @@ void Input::Update()
 	m_prevMousePressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
 	ExitPressed = sf::Keyboard::isKeyPressed(EXIT_KEY) & !m_prevExitPressed;
 	m_prevExitPressed = sf::Keyboard::isKeyPressed(EXIT_KEY);
+	InteractPressed = sf::Keyboard::isKeyPressed(INTERACT_KEY) & !m_prevInteractPressed;
+	m_prevInteractPressed = sf::Keyboard::isKeyPressed(INTERACT_KEY);
 }

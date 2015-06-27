@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include "InteractiveEntity.h"
 
 class Scene;
 
@@ -23,6 +24,7 @@ public:
 	float GetX2(){ return pos.x + solidXSize; }
 	float GetY1(){ return pos.y - solidYSize; }
 	float GetY2(){ return pos.y + solidYSize; }
+	InteractiveEntity* interactive = 0;
 protected:
 	bool solid=false;
 	float solidXSize=0;

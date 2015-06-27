@@ -12,6 +12,7 @@
 #include "entity/MeshEntity.h"
 #include "entity/PlayerEntity.h"
 #include "entity/BellowEntity.h"
+#include "entity/HatchEntity.h"
 #include "util/Localization.h"
 
 #define PI 3.1415f
@@ -106,7 +107,7 @@ Scene* SmithGame::GetSmithingScene()
 	m_gameScene = new Scene();
 
 	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>(RES_PATH + "mesh/floor.ply"), 0, 0, 0));
-	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>(RES_PATH + "mesh/hatchHole.ply"), -1, 0, 0));
+	m_gameScene->AddEntity(new HatchEntity(this, std::make_shared<Mesh>(RES_PATH + "mesh/hatchHole.ply"), std::make_shared<Mesh>(RES_PATH + "mesh/hatch.ply"), glm::vec3(-2.85f,0,0), -1, 0, 4, 4));
 	Player = new PlayerEntity(4, 0, std::make_shared<Mesh>(RES_PATH + "mesh/player.ply"), std::make_shared<Mesh>(RES_PATH + "mesh/shadow.ply"), glm::vec4(1,1,1,0.5f), 4, 3);
 	m_gameScene->AddEntity(Player);
 	std::shared_ptr<Mesh> wall = std::make_shared<Mesh>(RES_PATH + "mesh/wall.ply");
