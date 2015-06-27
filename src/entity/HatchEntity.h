@@ -5,6 +5,7 @@
 #include "InteractiveEntity.h"
 #include "../IView.h"
 #include "../rendering/Mesh.h"
+#include "../util/Transition.h"
 #include <glm/glm.hpp>
 
 class SmithGame;
@@ -38,6 +39,8 @@ private:
 	std::shared_ptr<Mesh> m_hatchHoleMesh;
 	std::shared_ptr<Mesh> m_hatchMesh;
 	glm::mat4 m_hatchTranslation;
+
+	Transition m_transition;
 
 	float m_hatchRot = 0;
 	float m_hatchSpeed = 0;

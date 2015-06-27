@@ -107,6 +107,7 @@
     <ClInclude Include="src\SmithingView.h" />
     <ClInclude Include="src\util\Input.h" />
     <ClInclude Include="src\util\Localization.h" />
+    <ClInclude Include="src\util\Transition.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine.cpp" />

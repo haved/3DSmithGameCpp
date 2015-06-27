@@ -75,10 +75,13 @@ void HatchEntity::OnViewChanging(std::shared_ptr<IView> prevView)
 {
 	m_prevView = prevView;
 	m_hatchSpeed = 0;
+	m_transition.SetStart(prevView.get());
 }
 
 void HatchEntity::UpdateView()
 {
+	m_transition.UpdateTransition(Global.DeltaTime*2);
+
 	if (m_hatchRot > -1.5f)
 		m_hatchSpeed -= Global.DeltaTime * 8;
 	else
@@ -89,7 +92,7 @@ void HatchEntity::UpdateView()
 }
 
 glm::vec3 HATCHENTITY_eyeOffset(0, 0, 10);
-glm::vec3 HatchEntity::GetEyePos(){ return pos + HATCHENTITY_eyeOffset; }
-glm::vec3 HatchEntity::GetEyeTarget(){ return pos; }
+glm::vec3 HatchEntity::GetEyePos(){ return m_transition.GetEyePos(pos + HATCHENTITY_eyeOffset); }
+glm::vec3 HatchEntity::GetEyeTarget(){ return m_transition.GetEyeTarget(pos); }
 glm::vec3 HATCHENTITY_UP(0, 1, 0);
-glm::vec3 HatchEntity::GetEyeUp(){ return HATCHENTITY_UP; }
+glm::vec3 HatchEntity::GetEyeUp(){ return m_transition.GetEyeUp(HATCHENTITY_UP); }

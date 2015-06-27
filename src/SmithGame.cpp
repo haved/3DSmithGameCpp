@@ -50,7 +50,7 @@ void SmithGame::Init()
 
 	//Game, Scene and View
 	CurrentScene = GetMenuScene();
-	SetView(std::make_unique<MainMenuView>(this));
+	SetView(std::make_shared<MainMenuView>(this));
 	std::cout << "SmithGame.Init() Finished!" << std::endl;
 }
 
@@ -67,6 +67,7 @@ void SmithGame::NewGame()
 {
 	DeleteMenuScene();
 	CurrentScene = GetSmithingScene();
+	CurrentView.reset();
 	SetView(std::make_unique<SmithingView>(this));
 }
 
