@@ -7,6 +7,8 @@
 #include "Scene.h"
 #include "SmithingView.h"
 #include "MainMenuView.h"
+#include <SFML/Graphics/Texture.hpp>
+#include "rendering/TextureFloor.h"
 #include "entity/MeshEntity.h"
 #include "entity/PlayerEntity.h"
 #include "entity/BellowEntity.h"
@@ -101,6 +103,11 @@ Scene* SmithGame::GetSmithingScene()
 		return m_gameScene;
 	m_gameScene = new Scene();
 
+	sf::Texture* texture = new sf::Texture();
+	texture->loadFromFile(RES_PATH + "textures/brickTiles.png");
+	texture->setRepeated(true);
+	texture->setSmooth(true);
+	m_gameScene->AddEntity(new TextureFloor(std::shared_ptr<sf::Texture>(texture), glm::vec2(10, 8), 50, 40, -1));
 	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>(RES_PATH + "mesh/floor.ply"), 0, 0, 0));
 	m_gameScene->AddEntity(new MeshEntity(std::make_shared<Mesh>(RES_PATH + "mesh/hatchHole.ply"), -1, 0, 0));
 	Player = new PlayerEntity(4, 0, std::make_shared<Mesh>(RES_PATH + "mesh/player.ply"), std::make_shared<Mesh>(RES_PATH + "mesh/shadow.ply"), glm::vec4(1,1,1,0.5f), 4, 3);

@@ -20,8 +20,9 @@ public:
 
 	void* operator new(size_t size) { return _aligned_malloc(size, 16); };
 	void operator delete(void* p) { _aligned_free(p); };
-private:
+
 	Mesh* m_flat;
+private:
 	float m_orthoWidth;
 	float m_orthoHeight;
 	glm::mat4 m_orthoProjection;

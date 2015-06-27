@@ -70,7 +70,7 @@ void Engine::Run(SmithGame* game)
 			}
 		}
 		game->Update();
-		glClearColor(0.3f, 0.3f, 0.3f, 1);
+		glClearColor(0, 0.5f, 1, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		game->Render();
 		m_window->display();
