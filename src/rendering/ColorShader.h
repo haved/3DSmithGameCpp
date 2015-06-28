@@ -7,9 +7,8 @@
 class ColorShader
 {
 public:
-	Shader* shader;
+	Shader m_shader;
 	ColorShader(const std::string& path);
-	~ColorShader();
 	void SetMVP(glm::mat4& MVP);
 	void SetColor(glm::vec4& color);
 	void Bind();

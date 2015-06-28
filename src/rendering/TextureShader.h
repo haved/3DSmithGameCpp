@@ -7,9 +7,9 @@
 class TextureShader
 {
 public:
-	Shader* m_shader;
+	Shader m_shader;
 	TextureShader(const std::string& path);
-	~TextureShader();
+	~TextureShader() {};
 	
 	void SetMVP(glm::mat4& MVP);
 	void SetColor(glm::vec4& color);

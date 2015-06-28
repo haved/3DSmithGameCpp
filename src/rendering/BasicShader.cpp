@@ -3,17 +3,12 @@
 
 BasicShader::BasicShader(const std::string& path)
 {
-	m_shader = new Shader(path + "BasicVS.glslvs", path + "BasicFS.glslfs");
-	modelspaceId = m_shader->GetUniformLocation("modelspaceMatrix");
-	MVPId = m_shader->GetUniformLocation("MVP");
-	colorId = m_shader->GetUniformLocation("color");
+	m_shader.LoadFromFiles(path + "BasicVS.glslvs", path + "BasicFS.glslfs");
+	modelspaceId = m_shader.GetUniformLocation("modelspaceMatrix");
+	MVPId = m_shader.GetUniformLocation("MVP");
+	colorId = m_shader.GetUniformLocation("color");
 	Global.BasicShaderInstance = this;
 	SetModelspaceMatrix(glm::mat4());
-}
-
-BasicShader::~BasicShader()
-{
-	delete m_shader;
 }
 
 void BasicShader::SetModelspaceMatrix(glm::mat4& modelspace)
@@ -38,5 +33,5 @@ void BasicShader::ResetColor()
 
 void BasicShader::Bind()
 {
-	glUseProgram(m_shader->ProgramID);
+	glUseProgram(m_shader.ProgramID);
 }

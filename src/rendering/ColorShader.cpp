@@ -3,15 +3,10 @@
 
 ColorShader::ColorShader(const std::string& path)
 {
-	shader = new Shader(path + "ColorVS.glslvs", path + "ColorFS.glslfs");
-	MVPId = shader->GetUniformLocation("MVP");
-	colorId = shader->GetUniformLocation("color");
+	m_shader.LoadFromFiles(path + "ColorVS.glslvs", path + "ColorFS.glslfs");
+	MVPId = m_shader.GetUniformLocation("MVP");
+	colorId = m_shader.GetUniformLocation("color");
 	Global.ColorShaderInstance = this;
-}
-
-ColorShader::~ColorShader()
-{
-	delete shader;
 }
 
 void ColorShader::SetMVP(glm::mat4& MVP)
@@ -26,5 +21,5 @@ void ColorShader::SetColor(glm::vec4& color)
 
 void ColorShader::Bind()
 {
-	glUseProgram(shader->ProgramID);
+	glUseProgram(m_shader.ProgramID);
 }

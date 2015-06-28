@@ -90,7 +90,9 @@
     <ClInclude Include="src\entity\InteractiveEntity.h" />
     <ClInclude Include="src\entity\MeshEntity.h" />
     <ClInclude Include="src\entity\PlayerEntity.h" />
+    <ClInclude Include="src\GameInfo.h" />
     <ClInclude Include="src\GlobalFields.h" />
+    <ClInclude Include="src\info\PlayerInventory.h" />
     <ClInclude Include="src\IView.h" />
     <ClInclude Include="src\MainMenuView.h" />
     <ClInclude Include="src\PauseView.h" />
@@ -116,7 +118,9 @@
     <ClCompile Include="src\entity\HatchEntity.cpp" />
     <ClCompile Include="src\entity\MeshEntity.cpp" />
     <ClCompile Include="src\entity\PlayerEntity.cpp" />
+    <ClCompile Include="src\GameInfo.cpp" />
     <ClCompile Include="src\GlobalFields.cpp" />
+    <ClCompile Include="src\info\PlayerInventory.cpp" />
     <ClCompile Include="src\MainMenuView.cpp" />
     <ClCompile Include="src\PauseView.cpp" />
     <ClCompile Include="src\rendering\BasicShader.cpp" />

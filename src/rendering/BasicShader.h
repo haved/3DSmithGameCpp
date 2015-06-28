@@ -8,9 +8,8 @@
 class BasicShader
 {
 public:
-	Shader* m_shader;
+	Shader m_shader;
 	BasicShader(const std::string& path);
-	~BasicShader();
 	void SetModelspaceMatrix(glm::mat4& modelspace);
 	void SetMVP(glm::mat4& MVP);
 	void SetColor(glm::vec4& color);

@@ -5,20 +5,15 @@
 
 TextureShader::TextureShader(const std::string& path)
 {
-	m_shader = new Shader(path + "TextureVS.glslvs", path + "TextureFS.glslfs");
-	MVPId = m_shader->GetUniformLocation("MVP");
-	colorId = m_shader->GetUniformLocation("color");
-	sampleUVId = m_shader->GetUniformLocation("sampleUV");
-	sampleSizeId = m_shader->GetUniformLocation("sampleSize");
-	diffuseId = m_shader->GetUniformLocation("diffuse");
+	m_shader.LoadFromFiles(path + "TextureVS.glslvs", path + "TextureFS.glslfs");
+	MVPId = m_shader.GetUniformLocation("MVP");
+	colorId = m_shader.GetUniformLocation("color");
+	sampleUVId = m_shader.GetUniformLocation("sampleUV");
+	sampleSizeId = m_shader.GetUniformLocation("sampleSize");
+	diffuseId = m_shader.GetUniformLocation("diffuse");
 	ResetSample();
 	SetDiffuse(0);
 	Global.TextureShaderInstance = this;
-}
-
-TextureShader::~TextureShader()
-{
-	delete m_shader;
 }
 
 void TextureShader::SetMVP(glm::mat4& MVP)
@@ -54,5 +49,5 @@ void TextureShader::ResetSample()
 
 void TextureShader::Bind()
 {
-	glUseProgram(m_shader->ProgramID);
+	glUseProgram(m_shader.ProgramID);
 }
