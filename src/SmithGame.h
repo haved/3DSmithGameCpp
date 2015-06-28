@@ -8,7 +8,7 @@
 #include "rendering/OrthoRenderingEngine.h"
 #include "util/Localization.h"
 #include <SFML/Graphics/Font.hpp>
-#include "TextureCollection.h"
+#include "ResCollection.h"
 #include "GameInfo.h"
 
 class Scene;
@@ -42,7 +42,7 @@ private:
 	std::unique_ptr<OrthoRenderingEngine> m_orthoRender;
 	std::unique_ptr<BasicShader> m_basicShaderInstance;
 	std::unique_ptr<ColorShader> m_colorShaderInstance;
-	std::unique_ptr<TextureCollection> m_textureCollection;
+	std::unique_ptr<ResCollection> m_textureCollection;
 	std::unique_ptr<TextureShader> m_textureShaderInstance;
 	std::unique_ptr<sf::Font> m_defaultFont;
 	std::unique_ptr<Localization> m_currentLanguage;

@@ -92,3 +92,8 @@ void OrthoRenderingEngine::DrawColoredTexturePart(sf::Texture texture, glm::vec4
 	Global.TextureShaderInstance->SetSampleSize(sampleSize);
 	m_flat->Draw();
 }
+
+void OrthoRenderingEngine::DrawColoredMesh(Mesh* mesh, glm::mat4& mat, glm::vec4& color, float x, float y, float width, float height)
+{
+
+}

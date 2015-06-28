@@ -92,6 +92,8 @@
     <ClInclude Include="src\entity\PlayerEntity.h" />
     <ClInclude Include="src\GameInfo.h" />
     <ClInclude Include="src\GlobalFields.h" />
+    <ClInclude Include="src\info\IngotItem.h" />
+    <ClInclude Include="src\info\Item.h" />
     <ClInclude Include="src\info\PlayerInventory.h" />
     <ClInclude Include="src\IView.h" />
     <ClInclude Include="src\MainMenuView.h" />
@@ -107,10 +109,11 @@
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\SmithGame.h" />
     <ClInclude Include="src\SmithingView.h" />
-    <ClInclude Include="src\TextureCollection.h" />
+    <ClInclude Include="src\ResCollection.h" />
     <ClInclude Include="src\util\Input.h" />
     <ClInclude Include="src\util\Localization.h" />
     <ClInclude Include="src\util\Transition.h" />
+    <ClInclude Include="src\util\UtilFields.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine.cpp" />
@@ -121,6 +124,8 @@
     <ClCompile Include="src\entity\PlayerEntity.cpp" />
     <ClCompile Include="src\GameInfo.cpp" />
     <ClCompile Include="src\GlobalFields.cpp" />
+    <ClCompile Include="src\info\IngotItem.cpp" />
+    <ClCompile Include="src\info\Item.cpp" />
     <ClCompile Include="src\info\PlayerInventory.cpp" />
     <ClCompile Include="src\MainMenuView.cpp" />
     <ClCompile Include="src\PauseView.cpp" />
@@ -135,9 +140,10 @@
     <ClCompile Include="src\Scene.cpp" />
     <ClCompile Include="src\SmithGame.cpp" />
     <ClCompile Include="src\SmithingView.cpp" />
-    <ClCompile Include="src\TextureCollection.cpp" />
+    <ClCompile Include="src\ResCollection.cpp" />
     <ClCompile Include="src\util\Input.cpp" />
     <ClCompile Include="src\util\Localization.cpp" />
+    <ClCompile Include="src\util\UtilFields.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SmithGame3D.rc" />

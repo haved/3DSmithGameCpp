@@ -19,6 +19,8 @@ public:
 	void DrawFlippedColoredTexture(sf::Texture texture, glm::vec4& color, float x, float y, float width, float height);
 	void DrawColoredTexturePart(sf::Texture texture, glm::vec4& color, float x, float y, float width, float height, glm::vec2& UV, glm::vec2& sampleSize);
 
+	void DrawColoredMesh(Mesh* mesh, glm::mat4& mat, glm::vec4& color, float x, float y, float width, float height);
+
 	void* operator new(size_t size) { return _aligned_malloc(size, 16); };
 	void operator delete(void* p) { _aligned_free(p); };
 

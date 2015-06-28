@@ -4,7 +4,7 @@
 #include "rendering/ColorShader.h"
 #include "rendering/TextureShader.h"
 #include "rendering/OrthoRenderingEngine.h"
-#include "TextureCollection.h"
+#include "ResCollection.h"
 
 #include "SFML/Graphics/Font.hpp"
 
@@ -14,7 +14,7 @@ typedef struct
 	ColorShader* ColorShaderInstance;
 	TextureShader* TextureShaderInstance;
 	OrthoRenderingEngine* OrthoRenderingEngine;
-	TextureCollection* TextureCollection;
+	ResCollection* ResCollection;
 	float DeltaTime;
 	float ElapsedTime;
 	sf::Window* UsedWindow;

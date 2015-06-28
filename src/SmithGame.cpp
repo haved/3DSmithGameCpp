@@ -33,7 +33,7 @@ void SmithGame::Init()
 	glActiveTexture(GL_TEXTURE0);
 
 	//TextureCollection
-	m_textureCollection = std::make_unique<TextureCollection>(RES_PATH + "textures/");
+	m_textureCollection = std::make_unique<ResCollection>(RES_PATH + "textures/", RES_PATH + "mesh/");
 
 	//Shaders
 	const std::string shaderPath = RES_PATH + "shaders/";
