@@ -32,6 +32,9 @@ void SmithGame::Init()
 	glEnable(GL_TEXTURE_2D);
 	glActiveTexture(GL_TEXTURE0);
 
+	//TextureCollection
+	m_textureCollection = std::make_unique<TextureCollection>(RES_PATH + "textures/");
+
 	//Shaders
 	const std::string shaderPath = RES_PATH + "shaders/";
 	m_basicShaderInstance = std::make_unique<BasicShader>(shaderPath);
@@ -66,6 +69,8 @@ SmithGame::~SmithGame()
 void SmithGame::NewGame()
 {
 	DeleteMenuScene();
+	CurrentGameInfo = std::make_unique<GameInfo>();
+	CurrentGameInfo->NewGame();
 	CurrentScene = GetSmithingScene();
 	CurrentView.reset();
 	SetView(std::make_unique<SmithingView>(this));

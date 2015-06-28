@@ -1,11 +1,6 @@
 #include "GameInfo.h"
 
-
-GameInfo::GameInfo()
+void GameInfo::NewGame()
 {
-}
-
-
-GameInfo::~GameInfo()
-{
+	Inventory = std::make_unique<PlayerInventory>();
 }

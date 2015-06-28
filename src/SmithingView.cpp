@@ -53,5 +53,5 @@ void SmithingView::UpdateView()
 
 void SmithingView::RenderView(glm::mat4& VP)
 {
-
+	m_game->CurrentGameInfo->Inventory->Render();
 }

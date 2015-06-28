@@ -6,8 +6,6 @@
 class GameInfo
 {
 public:
-	GameInfo();
-	~GameInfo();
+	void NewGame();
 	std::unique_ptr<PlayerInventory> Inventory;
 };
-
